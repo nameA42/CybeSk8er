@@ -42,7 +42,7 @@ class Play extends Phaser.Scene
 
     rampcol()
     {
-        player.body.velocity.y -= 10;
+        player.body.velocity.y -= 20;
     }
 
 }
