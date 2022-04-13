@@ -35,7 +35,7 @@ class Play extends Phaser.Scene
 
     update()
     {
-        this.bgr.tilePositionX += 4;
+        this.bgr.tilePositionX += 5;
         player.update();
         ramp.update();
     }

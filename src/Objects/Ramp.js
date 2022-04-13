@@ -18,7 +18,7 @@ class Ramp extends Phaser.Physics.Arcade.Image
         }
         else
         {
-            this.x -= 1;
+            this.x -= 10;
         }
     }
 }
