@@ -25,7 +25,7 @@ class Play extends Phaser.Scene
 
         ramp = new Ramp(this, 600, 480-15*1.5, 'ramp');
         player = new Player(this, 100, 100, 'player');
-
+        
         player.setCollideWorldBounds(true);
 
         this.physics.add.collider(player, platforms);
@@ -43,6 +43,7 @@ class Play extends Phaser.Scene
     rampcol()
     {
         player.body.velocity.y -= 20;
+        player.rampin();
     }
 
 }

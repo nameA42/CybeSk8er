@@ -10,11 +10,12 @@ class Player extends Phaser.Physics.Arcade.Sprite
         this.ljumpcount = 0;
         this.rjumpcount = 0;
         this.setBounce(0);
+        this.inramp = 0;
     }
     
     update()
     {
-        if(this.body.touching.down)
+        if(this.body.touching.down || this.inramp > 0)
         {
             if((keyA.isDown) && (this.ljumpcount < 100))
             {
@@ -26,10 +27,28 @@ class Player extends Phaser.Physics.Arcade.Sprite
             }
             if((Phaser.Input.Keyboard.JustUp(keyD)) || Phaser.Input.Keyboard.JustUp(keyA))
             {
-                this.setVelocityY(-2*(this.ljumpcount + this.rjumpcount));
+                this.body.velocity.y -= 2*(this.ljumpcount + this.rjumpcount);
                 this.ljumpcount = 0;
                 this.rjumpcount = 0;
             }
+        }
+        this.rampout();
+    }
+
+    rampin()
+    {
+        this.inramp = 20;
+    }
+    rampout()
+    {
+        if(this.inramp > 0)
+        {
+            this.inramp -= 1;
+        }
+        if(this.inramp == 1)
+        {
+            this.ljumpcount = 0;
+            this.rjumpcount = 0;
         }
     }
 }
