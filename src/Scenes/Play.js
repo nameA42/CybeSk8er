@@ -23,7 +23,7 @@ class Play extends Phaser.Scene
         var platforms = this.physics.add.staticGroup();
         platforms.create(300, game.config.height - 15/2, 'flr').setScale(100,1).refreshBody();
 
-        ramp = new Ramp(this, 300, 480-15*1.5, 'ramp');
+        ramp = new Ramp(this, 600, 480-15*1.5, 'ramp');
         player = new Player(this, 100, 100, 'player');
 
         player.setCollideWorldBounds(true);
