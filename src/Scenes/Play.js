@@ -107,7 +107,7 @@ class Play extends Phaser.Scene
         ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
-        player = new Player(this, 100, 100, 'kc0', 1, { shape: pmatter.playtmp, render: {xOffset: 0, yOffset: 0 } }).play('kc');
+        player = new Player(this, 100, 100, 'kc0', 1, { shape: pmatter.playtmp, render: {sprite: {xOffset: 0.2, yOffset: 1} } }).play('kc');
 
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
