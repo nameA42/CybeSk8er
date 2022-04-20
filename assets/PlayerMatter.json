@@ -16,7 +16,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "",
+				"label": "player",
 				"isSensor": false,
 				"circle": {
 					"x": 16.125,
@@ -25,7 +25,7 @@
 				}
 			},
 			{
-				"label": "",
+				"label": "player",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":0, "y":17 }, { "x":16, "y":17 }, { "x":22, "y":11 }, { "x":22, "y":0 }, { "x":0, "y":0 } ]

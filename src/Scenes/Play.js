@@ -36,13 +36,19 @@ class Play extends Phaser.Scene
 
         this.bgr = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0, 0);
 
-        let grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true}).setScale(100,1);
+        let grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr"}).setScale(100,1);
         grnd.setBounce(0);
 
-        ramp = new Ramp(this, 600, 480-15*1.5+1, 'ramp', 0, { shape: rmatter.rmptmp });
-        player = new Player(this, 100, 100, 'player', 0, { shape: pmatter.playtmp });
-        
-        grndcol = player.setOnCollideWith(grnd, player.grounded);
+        ramp = new Ramp(this, 600, 480-15*1.5+1, 'ramp', null, { shape: rmatter.rmptmp});
+        player = new Player(this, 100, 100, 'player', null, { shape: pmatter.playtmp});
+
+        this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
+        {
+            if((bodyA.label == "player" && (bodyB.label == "ramp" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ramp" || bodyA.label == "flr")))
+            {
+                player.grounded();
+            }
+        })
     }
 
     update()
