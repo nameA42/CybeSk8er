@@ -8,17 +8,4 @@ class Ramp extends Phaser.Physics.Matter.Image
         this.setIgnoreGravity(true);
         this.plcX = x;
     }
-
-    update()
-    {
-        if(this.x == this.width) 
-        {
-            this.x = this.plcX;
-        }
-        else
-        {
-            this.x -= 2;
-        }
-        this.rotation = 0;
-    }
 }

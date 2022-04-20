@@ -5,7 +5,6 @@ class Player extends Phaser.Physics.Matter.Sprite
         super(scene.matter.world, x, y, texture, frame, options);
         scene.add.existing(this);
         this.ms = 10;
-        this.initx = x;
         this.ljumpcount = 0;
         this.rjumpcount = 0;
         this.setBounce(0);
@@ -45,7 +44,6 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.rotation -= 0.1;
             }
         }
-        this.x = this.initx;
         this.groundcd = Math.max(this.groundcd - 1, 0);
     }
 
