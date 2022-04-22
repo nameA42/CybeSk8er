@@ -58,7 +58,7 @@ class Play extends Phaser.Scene
         let rmatter = this.cache.json.get('rmatter')
         let pmatter = this.cache.json.get('pmatter')
 
-        this.matter.world.setBounds(0, 0, 2000, 480, 10, true, true, true, true);
+        this.matter.world.setBounds(0, 0, 200000, 480, 10, true, true, true, true);
 
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -101,13 +101,13 @@ class Play extends Phaser.Scene
 
         this.bgr = this.add.tileSprite(0, 0, 1200, 480, 'bg').setOrigin(0, 0);
 
-        grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr"}).setScale(100,1);
+        grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
         grnd.setBounce(0);
 
         ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
-        player = new Player(this, 100, 100, 'kc0', 1, { shape: pmatter.playtmp, render: {sprite: {xOffset: 0.2, yOffset: 1} } }).play('kc');
+        player = new Player(this, 100, 100, 'kc0', null, { shape: pmatter.PPLAYER}).play('kc');
 
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
@@ -126,6 +126,13 @@ class Play extends Phaser.Scene
         ramp.update();
         cam.centerOn(player.x, 240);
         grnd.x = player.x;
-        player.x += 2;
+        if(player.onground)
+        {
+            player.thrustBack(-0.00037);
+        }
+        if(player.body.velocity.x > 0.0000001)
+        {
+            player.body.velocity.x = 0.0000001;
+        }
     }
 }

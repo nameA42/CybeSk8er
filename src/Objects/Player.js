@@ -15,7 +15,7 @@ class Player extends Phaser.Physics.Matter.Sprite
     
     update()
     {
-        if(this.onground && this.groundcd == 0)
+        if(this.onground && this.groundcd <= 0)
         {
             if((keyA.isDown) && (this.ljumpcount < 100))
             {
@@ -33,7 +33,7 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.onground = false;
             }
         }
-        else if(this.groundcd == 0)
+        else if(this.groundcd <= 0)
         {
             if((keyD.isDown))
             {
@@ -45,6 +45,10 @@ class Player extends Phaser.Physics.Matter.Sprite
             }
         }
         this.groundcd = Math.max(this.groundcd - 1, 0);
+        if(this.y < game.config.height - this.height)
+        {
+            this.onground = false;
+        }
     }
 
     grounded()
