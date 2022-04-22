@@ -15,13 +15,16 @@ class Play extends Phaser.Scene
     }
 
     preload() 
-    {
+    {   
+        //load assets
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
         this.load.image('bg', './assets/bgtmp.png');
         this.load.image('ramp', './assets/rmptmp.png');
+        this.load.image('platform', './assets/platform.png');
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
+        this.load.json('platformMatter', './assets/PlatformMatter.json');
 
         // loading kc
         this.load.image('kc0', './assets/kcgif-frames/pixil-frame-0.png');
@@ -54,9 +57,10 @@ class Play extends Phaser.Scene
 
     create() 
     {
-        cam = this.cameras.main
-        let rmatter = this.cache.json.get('rmatter')
-        let pmatter = this.cache.json.get('pmatter')
+        cam = this.cameras.main;
+        let rmatter = this.cache.json.get('rmatter');
+        let pmatter = this.cache.json.get('pmatter');
+        let platformMatter = this.cache.json.get('platformMatter');
 
         this.matter.world.setBounds(0, 0, 200000, 480, 10, true, true, true, true);
 
@@ -103,12 +107,21 @@ class Play extends Phaser.Scene
 
         grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
         grnd.setBounce(0);
+        
+        //multisegmented platform
+        let platformX = 1300;
+        let platformY = 350;
+        platform = new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform = new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform = new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform = new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform});
 
         ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         player = new Player(this, 100, 100, 'kc0', null, { shape: pmatter.PPLAYER}).play('kc');
 
+        //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
             if((bodyA.label == "player" && (bodyB.label == "ramp" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ramp" || bodyA.label == "flr")))
@@ -120,7 +133,7 @@ class Play extends Phaser.Scene
 
     update()
     {
-        this.bgr.tilePositionX += 1;
+        this.bgr.tilePositionX += player.body.velocity.x;
         this.bgr.x = player.x - this.bgr.width/2;
         player.update();
         ramp.update();
@@ -130,6 +143,7 @@ class Play extends Phaser.Scene
         {
             player.thrustBack(-0.00037);
         }
+        //set max velocity
         if(player.body.velocity.x > 0.0000001)
         {
             player.body.velocity.x = 0.0000001;

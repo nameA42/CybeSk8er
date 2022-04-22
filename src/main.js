@@ -11,6 +11,7 @@ var ramp
 var grndcol
 var cam
 var grnd
+let platform;
 
 let game = new Phaser.Game(config);
 
