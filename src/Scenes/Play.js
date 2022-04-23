@@ -226,7 +226,7 @@ class Play extends Phaser.Scene
         }
 
         //give player some upward thrust
-        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/2)
+        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/6)
         {
             player.thrustLeft(0.0002);
             //console.log(player.rotation);
