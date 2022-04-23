@@ -196,21 +196,25 @@ class Play extends Phaser.Scene
 
         //update game objects
         player.update();
-        for(let i = 0; i < ramps.length; i++) {
+        for(let i = 0; i < ramps.length; i++) 
+        {
             ramps[i].update();
         }
         
 
         //update platforms with playery
-        for(let i = 0; i < platforms2.length; i++) {
+        for(let i = 0; i < platforms2.length; i++) 
+        {
             platforms2[i].update(player.y);
         }
 
         //if the platform goes too far come back
         let currPlatformHeight = 350;
         let resetPoint = player.x - 400;
-        for(let i = 0; i < platforms2.length; i++) {
-            if(platforms2[i].x < resetPoint) {
+        for(let i = 0; i < platforms2.length; i++) 
+        {
+            if(platforms2[i].x < resetPoint) 
+            {
                 platforms2[i].x += 800;
                 platforms2[i].y = currPlatformHeight;
             }
