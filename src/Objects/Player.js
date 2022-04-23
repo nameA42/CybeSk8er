@@ -1,21 +1,21 @@
-class Player extends Phaser.Physics.Arcade.Sprite
+class Player extends Phaser.Physics.Matter.Sprite
 {
-    constructor(scene, x, y, texture, frame)
+    constructor(scene, x, y, texture, frame, options)
     {
-        super(scene, x, y, texture, frame);
+        super(scene.matter.world, x, y, texture, frame, options);
         scene.add.existing(this);
-        scene.physics.add.existing(this);
         this.ms = 10;
-        this.setGravity(0, 300);
         this.ljumpcount = 0;
         this.rjumpcount = 0;
         this.setBounce(0);
         this.inramp = 0;
+        this.onground = false;
+        this.groundcd = 0;
     }
     
     update()
     {
-        if(this.body.touching.down || this.inramp > 0)
+        if(this.onground && this.groundcd <= 0)
         {
             if((keyA.isDown) && (this.ljumpcount < 100))
             {
@@ -27,28 +27,36 @@ class Player extends Phaser.Physics.Arcade.Sprite
             }
             if((Phaser.Input.Keyboard.JustUp(keyD)) || Phaser.Input.Keyboard.JustUp(keyA))
             {
-                this.body.velocity.y -= 2*(this.ljumpcount + this.rjumpcount);
+                this.setVelocityY(this.body.velocity.y-2/50*(this.ljumpcount + this.rjumpcount));
                 this.ljumpcount = 0;
                 this.rjumpcount = 0;
+                this.onground = false;
             }
         }
-        this.rampout();
+        else if(this.groundcd <= 0)
+        {
+            if((keyD.isDown))
+            {
+                this.rotation += 0.1;
+            }
+            if((keyA.isDown))
+            {
+                this.rotation -= 0.1;
+            }
+        }
+        this.groundcd = Math.max(this.groundcd - 1, 0);
+        if(this.y < game.config.height - this.height)
+        {
+            this.onground = false;
+        }
     }
 
-    rampin()
+    grounded()
     {
-        this.inramp = 20;
-    }
-    rampout()
-    {
-        if(this.inramp > 0)
+        if(!this.onground)
         {
-            this.inramp -= 1;
+            this.groundcd = 10;
         }
-        if(this.inramp == 1)
-        {
-            this.ljumpcount = 0;
-            this.rjumpcount = 0;
-        }
+        this.onground = true;
     }
 }
