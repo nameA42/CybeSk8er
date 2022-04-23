@@ -12,5 +12,9 @@ class Platform extends Phaser.Physics.Matter.Image
 
     update()
     {
+        this.x += 1;
+    }
+    reset(playerY) {
+        
     }
 }

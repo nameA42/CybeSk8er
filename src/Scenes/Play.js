@@ -111,10 +111,11 @@ class Play extends Phaser.Scene
         //multisegmented platform
         let platformX = 1300;
         let platformY = 350;
-        platform = new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform = new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform = new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform = new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform1 = new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform2 = new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform3 = new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform4 = new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform});
+        platform5 = new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform});
 
         ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
@@ -137,6 +138,34 @@ class Play extends Phaser.Scene
         this.bgr.x = player.x - this.bgr.width/2;
         player.update();
         ramp.update();
+        //if the platform goes too far come back
+        let currPlatformHeight = 350;
+        let resetPoint = player.x - 400;
+        if(platform1.x < resetPoint) 
+        {   
+            platform1.x += 800;
+            platform1.y = currPlatformHeight;
+        }
+        if(platform2.x < resetPoint) 
+        {
+            platform2.x += 800;
+            platform2.y = currPlatformHeight;
+        }
+        if(platform3.x < resetPoint) 
+        {
+            platform3.x += 800;
+            platform3.y = currPlatformHeight;
+        }
+        if(platform4.x < resetPoint) 
+        {
+            platform4.x += 800;
+            platform4.y = currPlatformHeight;
+        }
+        if(platform5.x < resetPoint) 
+        {
+            platform5.x += 800;
+            platform5.y = currPlatformHeight;
+        }
         cam.centerOn(player.x, 240);
         grnd.x = player.x;
         if(player.onground)
@@ -144,9 +173,10 @@ class Play extends Phaser.Scene
             player.thrustBack(-0.00037);
         }
         //set max velocity
-        if(player.body.velocity.x > 0.0000001)
+        if(player.body.velocity.x > 10)
         {
-            player.body.velocity.x = 0.0000001;
+            console.log(player.body.velocity.x);
+            //player.setVelocity(10);
         }
     }
 }
