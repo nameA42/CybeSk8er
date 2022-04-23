@@ -129,16 +129,20 @@ class Play extends Phaser.Scene
         //multisegmented platform
         let platformX = 1300;
         let platformY = 350;
-        platform1 = new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform2 = new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform3 = new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform4 = new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform});
-        platform5 = new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform});
+        platforms2 = [
+            new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform}),
+            new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform}),
+            new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform}),
+            new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform}),
+            new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform})
+        ];
 
         //ramp creation
-        ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
-        ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
-        ramp = new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
+        ramps = [
+            new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp}),
+            new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp}),
+            new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp})
+        ];
         
         //player creation
         player = new Player(this, 100, 100, 'kc0', null, 
@@ -175,42 +179,24 @@ class Play extends Phaser.Scene
 
         //update game objects
         player.update();
-        ramp.update();
+        for(let i = 0; i < ramps.length; i++) {
+            ramps[i].update();
+        }
+        
 
         //update platforms with playery
-        platform1.update(player.y);
-        platform2.update(player.y);
-        platform3.update(player.y);
-        platform4.update(player.y);
-        platform5.update(player.y);
+        for(let i = 0; i < platforms2.length; i++) {
+            platforms2[i].update(player.y);
+        }
 
         //if the platform goes too far come back
         let currPlatformHeight = 350;
         let resetPoint = player.x - 400;
-        if(platform1.x < resetPoint) 
-        {   
-            platform1.x += 800;
-            platform1.y = currPlatformHeight;
-        }
-        if(platform2.x < resetPoint) 
-        {
-            platform2.x += 800;
-            platform2.y = currPlatformHeight;
-        }
-        if(platform3.x < resetPoint) 
-        {
-            platform3.x += 800;
-            platform3.y = currPlatformHeight;
-        }
-        if(platform4.x < resetPoint) 
-        {
-            platform4.x += 800;
-            platform4.y = currPlatformHeight;
-        }
-        if(platform5.x < resetPoint) 
-        {
-            platform5.x += 800;
-            platform5.y = currPlatformHeight;
+        for(let i = 0; i < platforms2.length; i++) {
+            if(platforms2[i].x < resetPoint) {
+                platforms2[i].x += 800;
+                platforms2[i].y = currPlatformHeight;
+            }
         }
 
         //center the cam on the player

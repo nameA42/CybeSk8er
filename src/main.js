@@ -3,19 +3,15 @@ let config = {
     width: 640,
     height: 480,
     scene: [ Play ]
-}
+};
 
-var platforms
-var player
-var ramp
-var grndcol
-var cam
-var grnd
-let platform1;
-let platform2;
-let platform3;
-let platform4;
-let platform5;
+var platforms;
+var player;
+var ramps;
+var grndcol;
+var cam;
+var grnd;
+let platforms2;
 
 let game = new Phaser.Game(config);
 
