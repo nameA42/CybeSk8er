@@ -159,6 +159,23 @@ class Play extends Phaser.Scene
                 player.grounded();
             }
         })
+
+        //check if player off ground
+        this.matter.world.on("collisionend", (event, bodyA, bodyB) =>
+        {
+            if((bodyA.label == "player" && (bodyB.label == "ngc" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ngc" || bodyA.label == "flr")))
+            {
+                this.time.addEvent(
+                    {
+                        delay: 900,
+                        callback: () => {player.onground = false;
+                            //console.log(player.rotation);
+                        },
+                        repeat: 0
+                    }
+                )
+            }
+        })
     }
 
     update()
@@ -224,5 +241,8 @@ class Play extends Phaser.Scene
             //console.log(player.body.velocity.x);
             player.setVelocityX(15);
         }
+
+        //update world bounds
+        this.matter.world.setBounds(Math.max(player.x- 310, 0), 0, 620, 480, 10, true, true, true, true);
     }
 }
