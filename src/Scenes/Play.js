@@ -19,12 +19,18 @@ class Play extends Phaser.Scene
         //load assets
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
-        this.load.image('bg', './assets/bgtmp.png');
         this.load.image('ramp', './assets/rmptmp.png');
         this.load.image('platform', './assets/platform.png');
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
         this.load.json('platformMatter', './assets/PlatformMatter.json');
+
+        // BG
+        this.load.image('front', './assets/front.png');
+        this.load.image('bg', './assets/bg.png');
+        this.load.image('next1', './assets/next1.png');
+        this.load.image('next2', './assets/next2.png');
+        this.load.image('next3', './assets/next3.png');
 
         // loading kc
         this.load.image('kc0', './assets/kcgif-frames/pixil-frame-0.png');
@@ -57,16 +63,22 @@ class Play extends Phaser.Scene
 
     create() 
     {
+        //add camera
         cam = this.cameras.main;
+
+        //get Hitbox Cached shapes
         let rmatter = this.cache.json.get('rmatter');
         let pmatter = this.cache.json.get('pmatter');
         let platformMatter = this.cache.json.get('platformMatter');
 
+        //make world
         this.matter.world.setBounds(0, 0, 200000, 480, 10, true, true, true, true);
 
+        //key def
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
+        //player anim
         this.anims.create(
             {
                 key: 'kc',
@@ -103,8 +115,14 @@ class Play extends Phaser.Scene
             }
         );
 
-        this.bgr = this.add.tileSprite(0, 0, 1200, 480, 'bg').setOrigin(0, 0);
+        //background creation
+        this.bgr = this.add.tileSprite(0, 0, 1000, 1000, 'bg').setOrigin(0, 0);
+        this.next1 = this.add.tileSprite(0, 0, 1000, 1000, 'next3').setOrigin(0, 0);
+        this.next2 = this.add.tileSprite(0, 0, 1000, 1000, 'next2').setOrigin(0, 0);
+        this.next3 = this.add.tileSprite(0, 0, 1000, 1000, 'next1').setOrigin(0, 0);
+        this.front = this.add.tileSprite(0, 0, 1000, 1000, 'front').setOrigin(0, 0);
 
+        //ground creation
         grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
         grnd.setBounce(0);
         
@@ -117,15 +135,22 @@ class Play extends Phaser.Scene
         platform4 = new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform});
         platform5 = new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform});
 
+        //ramp creation
         ramp = new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
         ramp = new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp});
-        player = new Player(this, 100, 100, 'kc0', null, { shape: pmatter.PPLAYER}).play('kc');
+        
+        //player creation
+        player = new Player(this, 100, 100, 'kc0', null, 
+        { 
+            shape: pmatter.PPLAYER, 
+        })
+        player.play('kc');
 
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
-            if((bodyA.label == "player" && (bodyB.label == "ramp" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ramp" || bodyA.label == "flr")))
+            if((bodyA.label == "player" && (bodyB.label == "ngc" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ngc" || bodyA.label == "flr")))
             {
                 player.grounded();
             }
@@ -134,10 +159,31 @@ class Play extends Phaser.Scene
 
     update()
     {
-        this.bgr.tilePositionX += player.body.velocity.x;
+        //update tile scroll
+        this.bgr.tilePositionX += 0;  // update tile sprite
+        this.front.tilePositionX += 3*player.body.velocity.x;  // update tile sprite
+        this.next1.tilePositionX += 0.5*player.body.velocity.x;  // update tile sprite
+        this.next2.tilePositionX += 1*player.body.velocity.x;  // update tile sprite
+        this.next3.tilePositionX += 2*player.body.velocity.x;  // update tile sprite
+        
+        //update tile positioning
         this.bgr.x = player.x - this.bgr.width/2;
+        this.front.x = player.x - this.front.width/2;
+        this.next1.x = player.x - this.next1.width/2;
+        this.next2.x = player.x - this.next2.width/2;
+        this.next3.x = player.x - this.next3.width/2;
+
+        //update game objects
         player.update();
         ramp.update();
+
+        //update platforms with playery
+        platform1.update(player.y);
+        platform2.update(player.y);
+        platform3.update(player.y);
+        platform4.update(player.y);
+        platform5.update(player.y);
+
         //if the platform goes too far come back
         let currPlatformHeight = 350;
         let resetPoint = player.x - 400;
@@ -166,17 +212,31 @@ class Play extends Phaser.Scene
             platform5.x += 800;
             platform5.y = currPlatformHeight;
         }
+
+        //center the cam on the player
         cam.centerOn(player.x, 240);
+
+        //move ground under player
         grnd.x = player.x;
+
+        //move player
         if(player.onground)
         {
             player.thrustBack(-0.00037);
         }
-        //set max velocity
-        if(player.body.velocity.x > 10)
+
+        //give player some upward thrust
+        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/2)
         {
-            console.log(player.body.velocity.x);
-            //player.setVelocity(10);
+            player.thrustLeft(0.0002);
+            //console.log(player.rotation);
+        }    
+
+        //set max velocity
+        if(player.body.velocity.x > 15)
+        {
+            //console.log(player.body.velocity.x);
+            player.setVelocityX(15);
         }
     }
 }

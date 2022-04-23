@@ -6,9 +6,9 @@
 		"isStatic": true,
 		"density": 0.1,
 		"restitution": 0,
-		"friction": 0.1,
+		"friction": 0.0,
 		"frictionAir": 0.01,
-		"frictionStatic": 0.5,
+		"frictionStatic": 0.0,
 		"collisionFilter": {
 			"group": 0,
 			"category": 1,
@@ -16,7 +16,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "ramp",
+				"label": "ngc",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":0, "y":20 }, { "x":200, "y":20 }, { "x":200, "y":0 }, { "x":0, "y":0 } ]

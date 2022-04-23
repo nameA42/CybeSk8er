@@ -10,11 +10,26 @@ class Platform extends Phaser.Physics.Matter.Image
         this.posY = y;
     }
 
-    update()
+    update(py)
     {
-        this.x += 1;
+        if(py > this.y - 2)
+        {
+            this.setCollisionCategory(2);
+            //console.log(2);
+        }
+        else
+        {
+            this.setCollisionCategory(1);
+        }
     }
     reset(playerY) {
         
+    }
+
+    active() {
+
+    }
+    deactive() {
+
     }
 }
