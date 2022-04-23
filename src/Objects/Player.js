@@ -45,10 +45,6 @@ class Player extends Phaser.Physics.Matter.Sprite
             }
         }
         this.groundcd = Math.max(this.groundcd - 1, 0);
-        if(this.y < game.config.height - this.height)
-        {
-            this.onground = false;
-        }
     }
 
     grounded()
