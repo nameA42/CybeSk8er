@@ -155,6 +155,8 @@ class Play extends Phaser.Scene
                 player.grounded();
             }
         })
+
+        //check if player off ground
         this.matter.world.on("collisionend", (event, bodyA, bodyB) =>
         {
             if((bodyA.label == "player" && (bodyB.label == "ngc" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ngc" || bodyA.label == "flr")))
@@ -163,7 +165,8 @@ class Play extends Phaser.Scene
                     {
                         delay: 900,
                         callback: () => {player.onground = false;
-                            console.log(player.rotation);},
+                            //console.log(player.rotation);
+                        },
                         repeat: 0
                     }
                 )
