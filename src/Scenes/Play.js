@@ -134,7 +134,17 @@ class Play extends Phaser.Scene
             new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform}),
             new Platform(this, platformX + 400, platformY, 'platform', null, {shape: platformMatter.platform}),
             new Platform(this, platformX + 600, platformY, 'platform', null, {shape: platformMatter.platform}),
-            new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform})
+            new Platform(this, platformX + 800, platformY, 'platform', null, {shape: platformMatter.platform}),
+            new Platform(this, platformX, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 200, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 400, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 600, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 800, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 200, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 400, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 600, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
+            new Platform(this, platformX + 800, 480-5, 'platform', null, {shape: platformMatter.platform}, true)
         ];
 
         //ramp creation
@@ -176,6 +186,7 @@ class Play extends Phaser.Scene
                 )
             }
         })
+        this.currPlatformHeight = 350;
     }
 
     update()
@@ -196,27 +207,55 @@ class Play extends Phaser.Scene
 
         //update game objects
         player.update();
-        for(let i = 0; i < ramps.length; i++) {
+        for(let i = 0; i < ramps.length; i++) 
+        {
             ramps[i].update();
         }
         
 
         //update platforms with playery
-        for(let i = 0; i < platforms2.length; i++) {
+        for(let i = 0; i < platforms2.length; i++) 
+        {
             platforms2[i].update(player.y);
         }
 
+        
         //if the platform goes too far come back
-        let currPlatformHeight = 350;
+        //calculate the current height of the top platform
+        this.currPlatformHeight = 475 - 125 * ((Math.floor((player.y - 461) / 125) * (-1))+ 1);
         let resetPoint = player.x - 400;
-        for(let i = 0; i < platforms2.length; i++) {
-            if(platforms2[i].x < resetPoint) {
+        for(let i = 0; i < platforms2.length; i++)  
+        {
+            if(platforms2[i].x < resetPoint) 
+            {
                 platforms2[i].x += 800;
-                platforms2[i].y = currPlatformHeight;
+                if(i < 5) 
+                {
+                    platforms2[i].y = this.currPlatformHeight;
+                } 
+                else if (i < 10) 
+                {
+                    platforms2[i].y = this.currPlatformHeight + 125;
+                }
+                else
+                {
+                    platforms2[i].y = this.currPlatformHeight + 250;
+                }
+                
+            }
+        }
+        //spawn ramps inline with character
+        for(let i = 0; i < ramps.length; i++)  
+        {
+            if(ramps[i].x < resetPoint) 
+            {
+                ramps[i].x += 800;
+                ramps[i].y = (475 - 125 * ((Math.floor((player.y - 461) / 125) * (-1))+ 1))+110;
+                
             }
         }
 
-        //center the cam on the player
+        //center the cam on the playerddadaad
         cam.centerOn(player.x, 240);
 
         //move ground under player
@@ -236,10 +275,10 @@ class Play extends Phaser.Scene
         }    
 
         //set max velocity
-        if(player.body.velocity.x > 15)
+        if(player.body.velocity.x > 3)
         {
-            //console.log(player.body.velocity.x);
-            player.setVelocityX(15);
+            console.log(player.body.velocity.x);
+            player.setVelocityX(3);
         }
 
         //update world bounds
