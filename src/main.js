@@ -2,7 +2,7 @@ let config = {
     type: Phaser.AUTO,
     width: 640,
     height: 480,
-    scene: [ Play ]
+    scene: [ Menu, Play ]
 };
 
 var platforms;

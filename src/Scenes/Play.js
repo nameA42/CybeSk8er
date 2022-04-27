@@ -7,7 +7,7 @@ class Play extends Phaser.Scene
             physics: {
                 default: 'matter',
                 matter: {
-                    debug: true,
+                    debug: false,
                     gravity: { y : 1 }
                 }
             }
@@ -123,8 +123,8 @@ class Play extends Phaser.Scene
         this.front = this.add.tileSprite(0, 0, 1000, 1000, 'front').setOrigin(0, 0);
 
         //ground creation
-        //grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
-        //grnd.setBounce(0);
+        grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
+        grnd.setBounce(0);
         
         //worldbound tracking
         this.recentx = 0;
@@ -164,6 +164,21 @@ class Play extends Phaser.Scene
         })
         player.play('kc');
 
+        //score
+        let scrConfig = {
+            fontFamily: "Courier",
+            fontSize: '26px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+        this.scr = this.add.text(cam.x + cam.width-40, cam.y - 50, 0, scrConfig).setOrigin(0.5);
+
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
@@ -194,6 +209,10 @@ class Play extends Phaser.Scene
 
     update()
     {
+        //scoreup
+        this.scr.x = cam.x + cam.width-40;
+        this.scr.y = cam.y;
+
         //update tile scroll
         this.bgr.tilePositionX += 0;  // update tile sprite
         this.front.tilePositionX += 3*player.body.velocity.x;  // update tile sprite
@@ -269,7 +288,7 @@ class Play extends Phaser.Scene
         cam.centerOn(player.x, player.y-player.height);
 
         //move ground under player
-        //grnd.x = player.x;
+        grnd.x = player.x;
 
         //move player
         if(player.onground)

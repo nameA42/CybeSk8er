@@ -11,10 +11,22 @@ class Player extends Phaser.Physics.Matter.Sprite
         this.inramp = 0;
         this.onground = false;
         this.groundcd = 0;
+        this.rcd = 0;
+        this.scr = 0;
+        this.flp = 0;
     }
     
     update()
     {
+        if(this.rotation == Math.PI)
+        {
+            this.flp = 1;
+        }
+        if(this.rotation == 0 && this.flp == 1)
+        {
+            this.flp = 0;
+            this.scr += 20;
+        }
         if(this.onground && this.groundcd <= 0)
         {
             if((keyA.isDown) && (this.ljumpcount < 100))
@@ -44,7 +56,17 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.rotation -= 0.1;
             }
         }
+        if(this.body.velocity.x <= 0 && this.rcd <= 0)
+        {
+            this.body.velocity.x = 1;
+            this.y -= 10;
+            this.rotation = 0;
+            this.rcd = 100;
+            this.scr -= 10;
+        }
         this.groundcd = Math.max(this.groundcd - 1, 0);
+        this.rcd -= 1;
+        console.log(this.body.velocity.x);
     }
 
     grounded()
