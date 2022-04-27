@@ -9,6 +9,7 @@ class Ramp extends Phaser.Physics.Matter.Image
         this.plcX = x;
     }
 
+    
     update()
     {
         if(this.x < cam.x)

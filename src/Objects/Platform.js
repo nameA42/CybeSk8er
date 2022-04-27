@@ -11,12 +11,16 @@ class Platform extends Phaser.Physics.Matter.Image
         this.bottom = bottom;
     }
 
-    update(py)
+    update(py, px)
     {
-        if(py > this.y - 2)
+        if(py > this.y - 12)
         {
             this.setCollisionCategory(2);
             //console.log(2);
+        }
+        else if(px < this.x - 100)
+        {
+            this.setCollisionCategory(2);
         }
         else
         {

@@ -123,11 +123,14 @@ class Play extends Phaser.Scene
         this.front = this.add.tileSprite(0, 0, 1000, 1000, 'front').setOrigin(0, 0);
 
         //ground creation
-        grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
-        grnd.setBounce(0);
+        //grnd = this.matter.add.image(300, game.config.height - 15/2, 'flr', null, {restitution: 0, isStatic: true, label: "flr", frictionStatic: 0, friction: 0}).setScale(100,1);
+        //grnd.setBounce(0);
         
+        //worldbound tracking
+        this.recentx = 0;
+
         //multisegmented platform
-        let platformX = 1300;
+        let platformX = 0;
         let platformY = 350;
         platforms2 = [
             new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform}),
@@ -205,6 +208,13 @@ class Play extends Phaser.Scene
         this.next2.x = player.x - this.next2.width/2;
         this.next3.x = player.x - this.next3.width/2;
 
+        
+        this.bgr.y = player.y - this.bgr.height/2;
+        this.front.y = player.y - this.front.height/2;
+        this.next1.y = player.y - this.next1.height/2;
+        this.next2.y = player.y - this.next2.height/2;
+        this.next3.y = player.y - this.next3.height/2;
+
         //update game objects
         player.update();
         for(let i = 0; i < ramps.length; i++) 
@@ -216,7 +226,7 @@ class Play extends Phaser.Scene
         //update platforms with playery
         for(let i = 0; i < platforms2.length; i++) 
         {
-            platforms2[i].update(player.y);
+            platforms2[i].update(player.y, player.x);
         }
 
         
@@ -256,10 +266,10 @@ class Play extends Phaser.Scene
         }
 
         //center the cam on the playerddadaad
-        cam.centerOn(player.x, 240);
+        cam.centerOn(player.x, player.y-player.height);
 
         //move ground under player
-        grnd.x = player.x;
+        //grnd.x = player.x;
 
         //move player
         if(player.onground)
@@ -275,13 +285,14 @@ class Play extends Phaser.Scene
         }    
 
         //set max velocity
-        if(player.body.velocity.x > 3)
+        if(player.body.velocity.x > 15)
         {
             console.log(player.body.velocity.x);
-            player.setVelocityX(3);
+            player.setVelocityX(15);
         }
 
         //update world bounds
-        this.matter.world.setBounds(Math.max(player.x- 310, 0), 0, 620, 480, 10, true, true, true, true);
+        this.recentx = Math.max(player.x- 310, this.recentx);
+        this.matter.world.setBounds(this.recentx, player.y- 400, 620, 480, 10, true, true, true, true);
     }
 }
