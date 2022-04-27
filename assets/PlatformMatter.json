@@ -16,7 +16,7 @@
 		},
 		"fixtures": [
 			{
-				"label": "ngc",
+				"label": "flr",
 				"isSensor": false,
 				"vertices": [
 					[ { "x":0, "y":20 }, { "x":200, "y":20 }, { "x":200, "y":0 }, { "x":0, "y":0 } ]

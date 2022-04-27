@@ -13,7 +13,7 @@ class Platform extends Phaser.Physics.Matter.Image
 
     update(py, px)
     {
-        if(py > this.y - 12)
+        if(py > this.y - 10)
         {
             this.setCollisionCategory(2);
             //console.log(2);

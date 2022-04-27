@@ -131,7 +131,7 @@ class Play extends Phaser.Scene
 
         //multisegmented platform
         let platformX = 0;
-        let platformY = 350;
+        let platformY = 275;
         platforms2 = [
             new Platform(this, platformX, platformY, 'platform', null, {shape: platformMatter.platform}),
             new Platform(this, platformX + 200, platformY, 'platform', null, {shape: platformMatter.platform}),
@@ -232,7 +232,7 @@ class Play extends Phaser.Scene
         
         //if the platform goes too far come back
         //calculate the current height of the top platform
-        this.currPlatformHeight = 475 - 125 * ((Math.floor((player.y - 461) / 125) * (-1))+ 1);
+        this.currPlatformHeight = 475 - 200 * ((Math.floor((player.y - 461) / 200) * (-1))+ 1);
         let resetPoint = player.x - 400;
         for(let i = 0; i < platforms2.length; i++)  
         {
@@ -245,11 +245,11 @@ class Play extends Phaser.Scene
                 } 
                 else if (i < 10) 
                 {
-                    platforms2[i].y = this.currPlatformHeight + 125;
+                    platforms2[i].y = this.currPlatformHeight + 200;
                 }
                 else
                 {
-                    platforms2[i].y = this.currPlatformHeight + 250;
+                    platforms2[i].y = this.currPlatformHeight + 400;
                 }
                 
             }
@@ -259,8 +259,8 @@ class Play extends Phaser.Scene
         {
             if(ramps[i].x < resetPoint) 
             {
-                ramps[i].x += 800;
-                ramps[i].y = (475 - 125 * ((Math.floor((player.y - 461) / 125) * (-1))+ 1))+110;
+                ramps[i].x += 1000 + Math.random()*1000;
+                ramps[i].y = (475 - 200 * ((Math.floor((player.y - 461) / 200) * (-1))+ 1))+185;
                 
             }
         }
