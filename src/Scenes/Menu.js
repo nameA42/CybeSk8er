@@ -25,9 +25,10 @@ class Menu extends Phaser.Scene {
         }
 
         //write
-        this.add.text(game.config.width/2, game.config.height/2 - 2*20 - 2*20, '(:)', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 - 20 - 20, 'TMP MENU (:', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - 80, '(:)', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - 40, 'TMP MENU (:', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'use A and D keys to Rotate/Jump', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 40, 'A to Start', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#FF0000';
         menuConfig.color = '#000';
 

@@ -18,11 +18,12 @@ class Player extends Phaser.Physics.Matter.Sprite
     
     update()
     {
-        if(this.rotation == Math.PI)
+        if(this.rotation >= 3.00 || this.rotation <= -3.00)
         {
+            console.log(this.rotation);
             this.flp = 1;
         }
-        if(this.rotation == 0 && this.flp == 1)
+        if(this.rotation <= 0.5 && this.rotation >= -0.5 && this.flp == 1)
         {
             this.flp = 0;
             this.scr += 20;
@@ -66,7 +67,7 @@ class Player extends Phaser.Physics.Matter.Sprite
         }
         this.groundcd = Math.max(this.groundcd - 1, 0);
         this.rcd -= 1;
-        console.log(this.body.velocity.x);
+        //console.log(this.body.velocity.x);
     }
 
     grounded()

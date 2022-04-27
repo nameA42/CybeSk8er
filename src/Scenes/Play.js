@@ -177,7 +177,7 @@ class Play extends Phaser.Scene
             },
             fixedWidth: 0
         }
-        this.scr = this.add.text(cam.x + cam.width-40, cam.y - 50, 0, scrConfig).setOrigin(0.5);
+        this.scr = this.add.text(cam.scrollX + cam.width-40, cam.scrollY - 50, 0, scrConfig);
 
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
@@ -210,8 +210,9 @@ class Play extends Phaser.Scene
     update()
     {
         //scoreup
-        this.scr.x = cam.x + cam.width-40;
-        this.scr.y = cam.y;
+        this.scr.x = cam.scrollX + cam.width-40;
+        this.scr.y = cam.scrollY;
+        this.scr.text = player.scr;
 
         //update tile scroll
         this.bgr.tilePositionX += 0;  // update tile sprite
@@ -306,7 +307,7 @@ class Play extends Phaser.Scene
         //set max velocity
         if(player.body.velocity.x > 15)
         {
-            console.log(player.body.velocity.x);
+            //console.log(player.body.velocity.x);
             player.setVelocityX(15);
         }
 
