@@ -38,6 +38,10 @@ class Platform extends Phaser.Physics.Matter.Image
             {
                 this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp', null, { shape: rmatter.rmptmp});
             }
+            else if(randomSpawn < 0.14)
+            {
+                this.spawnedItem = new Battery(this.scene, this.x, this.y - 15, 'battery', null, { shape: rmatter.rmptmp});
+            }
             else
             {
                 this.spawnedItem = 0;

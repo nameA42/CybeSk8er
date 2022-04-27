@@ -20,6 +20,7 @@ class Play extends Phaser.Scene
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
         this.load.image('ramp', './assets/rmptmp.png');
+        this.load.image('battery', './assets/battery.png');
         this.load.image('platform', './assets/platform.png');
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');

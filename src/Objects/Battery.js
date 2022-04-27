@@ -1,0 +1,15 @@
+class Battery extends Phaser.Physics.Matter.Image
+{
+    constructor(scene, x, y, texture, frame, options)
+    {
+        super(scene.matter.world, x, y, texture, frame, options);
+        scene.add.existing(this);
+        this.isStatic = true;
+        this.setIgnoreGravity(true);
+    }
+
+    
+    update()
+    {
+    }
+}
