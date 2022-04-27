@@ -7,7 +7,6 @@ let config = {
 
 var platforms;
 var player;
-var ramps;
 var grndcol;
 var cam;
 var grnd;

@@ -34,11 +34,22 @@ class Platform extends Phaser.Physics.Matter.Image
         if(this.spawner && this.spawnedItem == null)
         {
             let randomSpawn = Math.random();
-            if(randomSpawn < 0.33)
+            if(randomSpawn < 0.125)
             {
                 this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp', null, { shape: rmatter.rmptmp});
             }
+            else
+            {
+                this.spawnedItem = 0;
+            }
         }
+
+        //handles despawning of items
+        if(this.spawnedItem != null && this.spawnedItem != 0 && (this.spawnedItem.x < player.x - 300)) {
+            this.spawnedItem.destroy();
+            this.spawnedItem = 0;
+        }
+
     }
     reset(playerY) {
         

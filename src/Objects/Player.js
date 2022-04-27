@@ -64,6 +64,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             this.rotation = 0;
             this.rcd = 100;
             this.scr -= 10;
+            this.flp = 0;
         }
         this.groundcd = Math.max(this.groundcd - 1, 0);
         this.rcd -= 1;

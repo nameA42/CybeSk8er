@@ -149,13 +149,6 @@ class Play extends Phaser.Scene
             new Platform(this, platformX + 600, 480-5, 'platform', null, {shape: platformMatter.platform}, true),
             new Platform(this, platformX + 800, 480-5, 'platform', null, {shape: platformMatter.platform}, true)
         ];
-
-        //ramp creation
-        ramps = [
-            new Ramp(this, 600, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp}),
-            new Ramp(this, 1000, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp}),
-            new Ramp(this, 1500, 480-15*1.5+1.5, 'ramp', null, { shape: rmatter.rmptmp})
-        ];
         
         //player creation
         player = new Player(this, 100, 100, 'kc0', null, 
@@ -237,11 +230,6 @@ class Play extends Phaser.Scene
 
         //update game objects
         player.update();
-        for(let i = 0; i < ramps.length; i++) 
-        {
-            ramps[i].update();
-        }
-        
 
         //update platforms with playery
         for(let i = 0; i < platforms2.length; i++) 
@@ -258,6 +246,8 @@ class Play extends Phaser.Scene
         {
             if(platforms2[i].x < resetPoint) 
             {
+                //set the spawned item to null to ensure that a new item is spawned
+                platforms2[i].spawnedItem = null;
                 platforms2[i].x += 800;
                 if(i < 5) 
                 {
@@ -274,18 +264,8 @@ class Play extends Phaser.Scene
                 
             }
         }
-        //spawn ramps inline with character
-        for(let i = 0; i < ramps.length; i++)  
-        {
-            if(ramps[i].x < resetPoint) 
-            {
-                ramps[i].x += 1000 + Math.random()*1000;
-                ramps[i].y = (475 - 200 * ((Math.floor((player.y - 461) / 200) * (-1))+ 1))+185;
-                
-            }
-        }
 
-        //center the cam on the playerddadaad
+        //center the cam on the player
         cam.centerOn(player.x, player.y-player.height);
 
         //move ground under player
