@@ -12,6 +12,7 @@ var grndcol;
 var cam;
 var grnd;
 let platforms2;
+let rmatter;
 
 let game = new Phaser.Game(config);
 

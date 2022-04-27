@@ -67,7 +67,7 @@ class Play extends Phaser.Scene
         cam = this.cameras.main;
 
         //get Hitbox Cached shapes
-        let rmatter = this.cache.json.get('rmatter');
+        rmatter = this.cache.json.get('rmatter');
         let pmatter = this.cache.json.get('pmatter');
         let platformMatter = this.cache.json.get('platformMatter');
 
