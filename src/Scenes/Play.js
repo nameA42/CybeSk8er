@@ -286,10 +286,10 @@ class Play extends Phaser.Scene
         }    
 
         //set max velocity
-        if(player.body.velocity.x > 15)
+        if(player.body.velocity.x > 3)
         {
             //console.log(player.body.velocity.x);
-            player.setVelocityX(15);
+            player.setVelocityX(3);
         }
 
         //update world bounds
