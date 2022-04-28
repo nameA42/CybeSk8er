@@ -12,6 +12,8 @@ var cam;
 var grnd;
 let platforms2;
 let rmatter;
+let currBatteryLvl;
+let barPos = [];
 
 let game = new Phaser.Game(config);
 

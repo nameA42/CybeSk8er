@@ -173,6 +173,13 @@ class Play extends Phaser.Scene
         }
         this.scr = this.add.text(cam.scrollX + cam.width-40, cam.scrollY - 50, 0, scrConfig);
 
+
+        //battery bar
+        currBatteryLvl = 5;
+        barPos = [player.x+100, player.y+100];
+        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery', null, {}, 1);
+        this.barUpdate = this.time.addEvent({delay:3000, callback: this.barTick, callbackScope: this, loop:true});
+
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
@@ -202,7 +209,10 @@ class Play extends Phaser.Scene
     }
 
     update()
-    {
+    {   
+        //update bar position
+        barPos = [player.x-300, player.y-350];
+        this.batteryBar.update();
         //scoreup
         this.scr.x = cam.scrollX + cam.width-40;
         this.scr.y = cam.scrollY;
@@ -295,5 +305,12 @@ class Play extends Phaser.Scene
         //update world bounds
         this.recentx = Math.max(player.x- 310, this.recentx);
         this.matter.world.setBounds(this.recentx, player.y- 400, 620, 480, 10, true, true, true, true);
+    }
+
+    //ticks down the battery bar
+    barTick(){
+        console.log("Bar is at: " + currBatteryLvl);
+        currBatteryLvl -= 1;
+        this.batteryBar.update();
     }
 }
