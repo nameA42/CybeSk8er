@@ -39,7 +39,7 @@ class BatteryBar extends Phaser.Physics.Matter.Image
       this.y = barPos[1];
       barPos[0] += 30;
 
-      console.log("bar " + this.healthNum + "is at " + this.x + "," + this.y);
+      //console.log("bar " + this.healthNum + "is at " + this.x + "," + this.y);
     }
 
 }
