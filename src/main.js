@@ -14,6 +14,7 @@ let platforms2;
 let rmatter;
 let currBatteryLvl;
 let barPos = [];
+let score;
 
 let game = new Phaser.Game(config);
 

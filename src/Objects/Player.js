@@ -12,7 +12,7 @@ class Player extends Phaser.Physics.Matter.Sprite
         this.onground = false;
         this.groundcd = 0;
         this.rcd = 0;
-        this.scr = 0;
+        score = 0;
         this.flp = 0;
     }
     
@@ -26,7 +26,7 @@ class Player extends Phaser.Physics.Matter.Sprite
         if(this.rotation <= 0.5 && this.rotation >= -0.5 && this.flp == 1)
         {
             this.flp = 0;
-            this.scr += 20;
+            score += 20;
         }
         if(this.onground && this.groundcd <= 0)
         {
@@ -63,7 +63,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             this.y -= 10;
             this.rotation = 0;
             this.rcd = 100;
-            this.scr -= 10;
+            score -= 10;
             this.flp = 0;
         }
         this.groundcd = Math.max(this.groundcd - 1, 0);

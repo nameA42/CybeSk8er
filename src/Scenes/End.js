@@ -38,6 +38,7 @@ class End extends Phaser.Scene {
 
        //write
        this.add.text(game.config.width/2, game.config.height/2 - 40, 'Game Over', menuConfig).setOrigin(0.5);
+       this.add.text(game.config.width/2, game.config.height/2, "Score: " + score, menuConfig).setOrigin(0.5);
        this.add.text(game.config.width/2, game.config.height/2 + 40, 'Press A to Play Again', menuConfig).setOrigin(0.5);
        menuConfig.backgroundColor = '#FF0000';
        menuConfig.color = '#000';

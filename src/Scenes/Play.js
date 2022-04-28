@@ -210,13 +210,18 @@ class Play extends Phaser.Scene
 
     update()
     {   
+        //enforce bar max
+        if(currBatteryLvl > 6) {
+            currBatteryLvl = 6;
+        }
         //update bar position
         barPos = [player.x-330, player.y-350];
         this.batteryBar.update();
+        
         //scoreup
         this.scr.x = cam.scrollX + cam.width-40;
         this.scr.y = cam.scrollY;
-        this.scr.text = player.scr;
+        this.scr.text = score;
 
         //update tile scroll
         this.bgr.tilePositionX += 0;  // update tile sprite
@@ -232,7 +237,7 @@ class Play extends Phaser.Scene
         this.next2.x = player.x - this.next2.width/2;
         this.next3.x = player.x - this.next3.width/2;
 
-        
+        //move the background up and down with the player
         this.bgr.y = player.y - this.bgr.height/2;
         this.front.y = player.y - this.front.height/2;
         this.next1.y = player.y - this.next1.height/2;
