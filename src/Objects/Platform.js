@@ -44,6 +44,10 @@ class Platform extends Phaser.Physics.Matter.Image
                 this.spawnedItem.setScale(0.1);
                 this.spawnedItem.play('battery');
             }
+            else if(randomSpawn < 0.3)
+            {
+                this.spawnedItem = new Platform(this.scene, this.x+100, this.y-117, 'platform', null, {shape: platformMatter.platform}, false);
+            }
             else
             {
                 this.spawnedItem = 0;

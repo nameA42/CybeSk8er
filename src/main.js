@@ -12,6 +12,7 @@ var cam;
 var grnd;
 let platforms2;
 let rmatter;
+let platformMatter;
 let currBatteryLvl;
 let barPos = [];
 let score;

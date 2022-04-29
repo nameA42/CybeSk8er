@@ -72,7 +72,7 @@ class Play extends Phaser.Scene
         //get Hitbox Cached shapes
         rmatter = this.cache.json.get('rmatter');
         let pmatter = this.cache.json.get('pmatter');
-        let platformMatter = this.cache.json.get('platformMatter');
+        platformMatter = this.cache.json.get('platformMatter');
 
         //make world
         this.matter.world.setBounds(0, 0, 200000, 480, 10, true, true, true, true);
