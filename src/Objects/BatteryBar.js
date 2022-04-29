@@ -1,4 +1,4 @@
-class BatteryBar extends Phaser.Physics.Matter.Image
+class BatteryBar extends Phaser.Physics.Matter.Sprite
 {
     constructor(scene, x, y, texture, frame, options, number)
     {
@@ -20,7 +20,9 @@ class BatteryBar extends Phaser.Physics.Matter.Image
       //the current element and there isnt already one spawned
       if(this.child == null && this.healthNum < currBatteryLvl) 
       {
-         this.child = new BatteryBar(this.scene, this.x + 30, this.y, this.texture, null, {}, this.healthNum + 1);
+         this.child = new BatteryBar(this.scene, this.x + 60, this.y, this.texture, null, {}, this.healthNum + 1);
+         this.child.setScale(this.scale);
+         this.child.play('battery');
       }
       else if(this.child != null && this.healthNum >= currBatteryLvl)
       {
@@ -37,7 +39,7 @@ class BatteryBar extends Phaser.Physics.Matter.Image
       //update based on barPos
       this.x = barPos[0];
       this.y = barPos[1];
-      barPos[0] += 30;
+      barPos[0] += 60;
 
       //console.log("bar " + this.healthNum + "is at " + this.x + "," + this.y);
     }

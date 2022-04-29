@@ -1,4 +1,4 @@
-class Battery extends Phaser.Physics.Matter.Image
+class Battery extends Phaser.Physics.Matter.Sprite
 {
     constructor(scene, x, y, texture, frame, options)
     {

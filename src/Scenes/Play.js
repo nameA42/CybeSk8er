@@ -20,7 +20,7 @@ class Play extends Phaser.Scene
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
         this.load.image('ramp', './assets/rmptmp.png');
-        this.load.image('battery', './assets/battery.png');
+        //this.load.image('battery', './assets/battery.png');
         this.load.image('platform', './assets/platform.png');
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
@@ -33,6 +33,8 @@ class Play extends Phaser.Scene
         this.load.image('next2', './assets/next2.png');
         this.load.image('next3', './assets/next3.png');
 
+        this.load.atlas('battery_atlas', './assets/battery.png', "./assets/battery.json");
+    
         // loading kc
         this.load.image('kc0', './assets/kcgif-frames/pixil-frame-0.png');
         this.load.image('kc1', './assets/kcgif-frames/pixil-frame-1.png');
@@ -173,11 +175,26 @@ class Play extends Phaser.Scene
         }
         this.scr = this.add.text(cam.scrollX + cam.width-40, cam.scrollY - 50, 0, scrConfig);
 
+        //battery animation
+        this.anims.create({
+            key:'battery',
+            frames: this.anims.generateFrameNames('battery_atlas', {
+                prefix: 'battery',
+                start: 1,
+                end: 3,
+                suffix: '',
+                zeroPad: 4
+            }),
+            frameRate: 10,
+            repeat: -1
+        });
 
         //battery bar
         currBatteryLvl = 6;
         barPos = [player.x+100, player.y+100];
-        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery', null, {}, 1);
+        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery0001', null, {}, 1);
+        this.batteryBar.setScale(.2);
+        this.batteryBar.play('battery');
         this.barUpdate = this.time.addEvent({delay:3000, callback: this.barTick, callbackScope: this, loop:true});
 
         //check if player is on the ground
@@ -211,11 +228,12 @@ class Play extends Phaser.Scene
     update()
     {   
         //enforce bar max
-        if(currBatteryLvl > 6) {
+        if(currBatteryLvl > 6) 
+        {
             currBatteryLvl = 6;
         }
         //update bar position
-        barPos = [player.x-330, player.y-350];
+        barPos = [player.x-350, player.y-350];
         this.batteryBar.update();
         
         //scoreup
