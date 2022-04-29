@@ -32,23 +32,23 @@ class Platform extends Phaser.Physics.Matter.Image
         
         //handles spawning of ramps/batteries
         if(this.spawner && this.spawnedItem == null)
-        {
+        {   
             let randomSpawn = Math.random();
-            if(randomSpawn < 0.0625)
+            if(randomSpawn < (spawnChances[0]/2)/100)
             {
                 this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp2', null, { shape: rmatter.rmptmp});
             }
-            else if(randomSpawn < 0.125)
+            else if(randomSpawn < (spawnChances[0]/2)/100)
             {
                 this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp1', null, { shape: rmatter.rmptmp});
             }
-            else if(randomSpawn < 0.16)
+            else if(randomSpawn < (spawnChances[0]/2 + spawnChances[2])/100)
             {
                 this.spawnedItem = new Battery(this.scene, this.x, this.y - 70, 'battery0001', null, {shape: rmatter.rmptmp});
                 this.spawnedItem.setScale(0.1);
                 this.spawnedItem.play('battery');
             }
-            else if(randomSpawn < 0.3)
+            else if(randomSpawn < (spawnChances[0]/2 + spawnChances[2] + spawnChances[1])/100)
             {
                 this.spawnedItem = new Platform(this.scene, this.x+100, this.y-117, 'platform', null, {shape: platformMatter.platform}, false);
             }

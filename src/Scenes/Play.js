@@ -191,12 +191,11 @@ class Play extends Phaser.Scene
         });
 
         //battery bar
-        currBatteryLvl = 6;
         barPos = [player.x+100, player.y+100];
-        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery0001', null, {}, 1);
+        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery0001', null, {}, 0);
         this.batteryBar.setScale(.2);
         this.batteryBar.play('battery');
-        this.barUpdate = this.time.addEvent({delay:3000, callback: this.barTick, callbackScope: this, loop:true});
+        this.barUpdate = this.time.addEvent({delay:(batteryTime * 1000), callback: this.barTick, callbackScope: this, loop:true});
 
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
@@ -321,10 +320,10 @@ class Play extends Phaser.Scene
         }    
 
         //set max velocity
-        if(player.body.velocity.x > 3)
+        if(player.body.velocity.x > playerSpeed)
         {
             //console.log(player.body.velocity.x);
-            player.setVelocityX(3);
+            player.setVelocityX(playerSpeed);
         }
 
         //update world bounds
