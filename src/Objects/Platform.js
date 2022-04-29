@@ -34,9 +34,13 @@ class Platform extends Phaser.Physics.Matter.Image
         if(this.spawner && this.spawnedItem == null)
         {
             let randomSpawn = Math.random();
-            if(randomSpawn < 0.125)
+            if(randomSpawn < 0.0625)
             {
-                this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp', null, { shape: rmatter.rmptmp});
+                this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp2', null, { shape: rmatter.rmptmp});
+            }
+            else if(randomSpawn < 0.125)
+            {
+                this.spawnedItem = new Ramp(this.scene, this.x, this.y - 15, 'ramp1', null, { shape: rmatter.rmptmp});
             }
             else if(randomSpawn < 0.16)
             {
