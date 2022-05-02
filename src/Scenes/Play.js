@@ -281,6 +281,7 @@ class Play extends Phaser.Scene
         {
             if(platforms2[i].x < resetPoint) 
             {
+                //platforms2[i] = new Platform(this, platforms2[i].x, platforms2[i].y, 'platform', null, {shape: platformMatter.platform}),
                 //set the spawned item to null to ensure that a new item is spawned
                 platforms2[i].spawnedItem = null;
                 platforms2[i].x += 800;
@@ -325,7 +326,6 @@ class Play extends Phaser.Scene
             //console.log(player.body.velocity.x);
             player.setVelocityX(playerSpeed);
         }
-
         //update world bounds
         this.recentx = Math.max(player.x- 310, this.recentx);
         this.matter.world.setBounds(this.recentx, player.y- 400, 620, 480, 10, true, true, true, true);

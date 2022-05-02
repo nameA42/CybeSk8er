@@ -59,10 +59,10 @@ class Platform extends Phaser.Physics.Matter.Image
         }
 
         //handles despawning of items
-        if(this.spawnedItem != null && this.spawnedItem != 0 && (this.spawnedItem.x < player.x - 300)) {
-            this.spawnedItem.destroy();
-            this.spawnedItem = 0;
-        }
+        //if(this.spawnedItem != null && this.spawnedItem != 0 && (this.spawnedItem.x < player.x - 300)) {
+        //    this.spawnedItem.destroy();
+        //    this.spawnedItem = 0;
+        //}
 
     }
     reset(playerY) {
