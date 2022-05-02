@@ -6,6 +6,7 @@ class Battery extends Phaser.Physics.Matter.Sprite
         scene.add.existing(this);
         this.isStatic = true;
         this.setIgnoreGravity(true);
+        this.setSensor(true);
     }
 
     

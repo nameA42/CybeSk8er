@@ -11,6 +11,7 @@ class Platform extends Phaser.Physics.Matter.Image
         this.posY = y;
         this.spawner = spawner;
         this.spawnedItem = null;
+        this.spawnedP = false;
     }
 
     update(py, px)
@@ -51,6 +52,7 @@ class Platform extends Phaser.Physics.Matter.Image
             else if(randomSpawn < (spawnChances[0]/2 + spawnChances[2] + spawnChances[1])/100)
             {
                 this.spawnedItem = new Platform(this.scene, this.x+100, this.y-117, 'platform', null, {shape: platformMatter.platform}, false);
+                this.spawnedP = true;
             }
             else
             {
@@ -62,6 +64,7 @@ class Platform extends Phaser.Physics.Matter.Image
         if(this.spawnedItem != null && this.spawnedItem != 0 && (this.spawnedItem.x < player.x - 300)) {
             this.spawnedItem.destroy();
             this.spawnedItem = 0;
+            this.spawnedP = false;
         }
 
     }

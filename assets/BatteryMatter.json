@@ -1,18 +1,19 @@
 {
 	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
-	"battery": {
+	"batterybox": {
 		"type": "fromPhysicsEditor",
 		"label": "batterybox",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.1,
 		"restitution": 0,
 		"friction": 0.1,
 		"frictionAir": 0.01,
 		"frictionStatic": 0.5,
+		"isSensor": true,
 		"collisionFilter": {
 			"group": 0,
 			"category": 1,
-			"mask": 255
+			"mask": 1
 		},
 		"fixtures": [
 			{

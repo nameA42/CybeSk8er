@@ -75,6 +75,7 @@ class Play extends Phaser.Scene
         rmatter = this.cache.json.get('rmatter');
         let pmatter = this.cache.json.get('pmatter');
         platformMatter = this.cache.json.get('platformMatter');
+        battmatt = this.cache.json.get('battmatt');
 
         //make world
         this.matter.world.setBounds(0, 0, 200000, 480, 10, true, true, true, true);
@@ -161,6 +162,9 @@ class Play extends Phaser.Scene
             shape: pmatter.PPLAYER, 
         })
         player.play('kc');
+        this.pa = 0.0007
+        this.pforpos = new Phaser.Math.Vector2(0, 0);
+        this.pforce = new Phaser.Math.Vector2(this.pa*Math.cos(player.rotation),this.pa*Math.sin(player.rotation));
 
         //score
         let scrConfig = {
@@ -193,7 +197,7 @@ class Play extends Phaser.Scene
 
         //battery bar
         barPos = [player.x+100, player.y+100];
-        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery0001', null, {}, 0);
+        this.batteryBar = new BatteryBar(this, barPos[0], barPos[1], 'battery0001', null, {shape: battmatt.batterybox}, 0);
         this.batteryBar.setScale(.2);
         this.batteryBar.play('battery');
         this.barUpdate = this.time.addEvent({delay:(batteryTime * 1000), callback: this.barTick, callbackScope: this, loop:true});
@@ -222,16 +226,22 @@ class Play extends Phaser.Scene
                     }
                 )
             }
-            if(bodyA.label == "playersense" && bodyB.label == "bat")
-            {
-                currBatteryLvl += 1;
-                
-            }
-            if(bodyB.label == "playersense" && bodyA.label == "bat")
-            {
-                currBatteryLvl += 1;
-            }
         })
+        //battery collision
+        this.matter.world.on("collisionstart", (event, bodyA, bodyB) =>
+            {
+                if(bodyA.label == "playersense" && bodyB.label == "bat")
+                {
+                    currBatteryLvl += 1;
+                }
+                if(bodyB.label == "playersense" && bodyA.label == "bat")
+                {
+                    currBatteryLvl += 1;
+                }
+                //console.log(bodyB.label);
+                //console.log(bodyA.label);
+            }
+        )
         this.currPlatformHeight = 350;
     }
 
@@ -279,6 +289,10 @@ class Play extends Phaser.Scene
         for(let i = 0; i < platforms2.length; i++) 
         {
             platforms2[i].update(player.y, player.x);
+            if(platforms2[i].spawnedP)
+            {
+                platforms2[i].spawnedItem.update(player.y, player.x);
+            }
         }
 
         
@@ -319,20 +333,20 @@ class Play extends Phaser.Scene
         //move player
         if(player.onground)
         {
-            player.thrustBack(-0.00037);
+            player.thrust(this.pa);
         }
 
         //give player some upward thrust
-        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/6)
+        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/12)
         {
-            player.thrustLeft(0.0002);
+            player.thrustLeft(0.0008);
             //console.log(player.rotation);
         }    
 
         //set max velocity
         if(player.body.velocity.x > playerSpeed)
         {
-            //console.log(player.body.velocity.x);
+            console.log(player.body.velocity.x);
             player.setVelocityX(playerSpeed);
         }
 

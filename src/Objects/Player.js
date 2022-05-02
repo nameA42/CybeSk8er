@@ -14,6 +14,8 @@ class Player extends Phaser.Physics.Matter.Sprite
         this.rcd = 0;
         score = 0;
         this.flp = 0;
+        this.body.mass = 1;
+        this.body.centerOfMass = this.body.parts[1].centerOfMass;
     }
     
     update()
