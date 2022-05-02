@@ -327,7 +327,6 @@ class Play extends Phaser.Scene
 
         //center the cam on the player
         cam.centerOn(player.x, player.y-player.height);
-        cam.zoom = 0.2;
         //move ground under player
         grnd.x = player.x;
 
