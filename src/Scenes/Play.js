@@ -305,6 +305,7 @@ class Play extends Phaser.Scene
         {
             if(platforms2[i].x < resetPoint) 
             {
+                this.add.image(platforms2[i].x, platforms2[i].y, 'platform');
                 //set the spawned item to null to ensure that a new item is spawned
                 platforms2[i].spawnedItem = null;
                 platforms2[i].x += 800;
@@ -326,7 +327,7 @@ class Play extends Phaser.Scene
 
         //center the cam on the player
         cam.centerOn(player.x, player.y-player.height);
-
+        cam.zoom = 0.2;
         //move ground under player
         grnd.x = player.x;
 
@@ -349,7 +350,6 @@ class Play extends Phaser.Scene
             console.log(player.body.velocity.x);
             player.setVelocityX(playerSpeed);
         }
-
         //update world bounds
         this.recentx = Math.max(player.x- 310, this.recentx);
         this.matter.world.setBounds(this.recentx, player.y- 400, 620, 480, 10, true, true, true, true);

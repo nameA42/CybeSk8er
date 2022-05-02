@@ -15,7 +15,7 @@ class BatteryBar extends Phaser.Physics.Matter.Sprite
     
     update()
     {
-      
+      this.body.angle = 0;
       //spawns a new child element of the bar if the helth is greater than 
       //the current element and there isnt already one spawned
       if(this.child == null && this.healthNum < currBatteryLvl) 

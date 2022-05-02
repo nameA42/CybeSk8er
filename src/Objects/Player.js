@@ -59,7 +59,7 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.rotation -= 0.1;
             }
         }
-        if(this.body.velocity.x <= 0 && this.rcd <= 0)
+        /*if(this.body.velocity.x <= 0 && this.rcd <= 0)
         {
             this.body.velocity.x = 1;
             this.y -= 10;
@@ -67,7 +67,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             this.rcd = 100;
             score -= 10;
             this.flp = 0;
-        }
+        }*/
         this.groundcd = Math.max(this.groundcd - 1, 0);
         this.rcd -= 1;
         //console.log(this.body.velocity.x);
