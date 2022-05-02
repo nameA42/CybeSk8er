@@ -223,7 +223,6 @@ class Play extends Phaser.Scene
             }
         })
         this.currPlatformHeight = 350;
-        this.currPlatformSpawnGroup = 0;
     }
 
     update()
@@ -278,29 +277,33 @@ class Play extends Phaser.Scene
         let platformDist = 275;
         this.currPlatformHeight = 475 - platformDist * ((Math.floor((player.y - 461) / platformDist) * (-1))+ 1);
         let resetPoint = player.x - 400;
-        if(player.x > this.currPlatformSpawnGroup * 200) 
+        for(let i = 0; i < platforms2.length; i++)  
         {
-            console.log('spawning: ' + this.currPlatformSpawnGroup);
-            this.currPlatformSpawnGroup++;
-            platforms2.push(new Platform(this, player.x+400, 475, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*2, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*3, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*4, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*5, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*6, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*7, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*8, 'platform', null, {shape: platformMatter.platform}));
-            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*9, 'platform', null, {shape: platformMatter.platform}));
-            for(let i = platforms2.length - 10; i < platforms2.length ;i++)
+            if(platforms2[i].x < resetPoint) 
             {
-                platforms2[i].update(player.x, player.y);
+                this.add.image(platforms2[i].x, platforms2[i].y, 'platform');
+                //set the spawned item to null to ensure that a new item is spawned
+                platforms2[i].spawnedItem = null;
+                platforms2[i].x += 800;
+                if(i < 5) 
+                {
+                    platforms2[i].y = this.currPlatformHeight;
+                } 
+                else if (i < 10) 
+                {
+                    platforms2[i].y = this.currPlatformHeight + platformDist;
+                }
+                else
+                {
+                    platforms2[i].y = this.currPlatformHeight + platformDist*2;
+                }
+                
             }
-        }   
+        }
 
         //center the cam on the player
         cam.centerOn(player.x, player.y-player.height);
-
+        cam.zoom = 0.2;
         //move ground under player
         grnd.x = player.x;
 
