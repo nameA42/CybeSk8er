@@ -44,7 +44,7 @@ class Platform extends Phaser.Physics.Matter.Image
             }
             else if(randomSpawn < (spawnChances[0]/2 + spawnChances[2])/100)
             {
-                this.spawnedItem = new Battery(this.scene, this.x, this.y - 70, 'battery0001', null, {shape: rmatter.rmptmp});
+                this.spawnedItem = new Battery(this.scene, this.x, this.y - 70, 'battery0001', null, {shape: battmatt.batterybox});
                 this.spawnedItem.setScale(0.1);
                 this.spawnedItem.play('battery');
             }

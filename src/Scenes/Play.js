@@ -26,6 +26,7 @@ class Play extends Phaser.Scene
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
         this.load.json('platformMatter', './assets/PlatformMatter.json');
+        this.load.json('battmatt', './assets/BatteryMatter.json');
 
         // BG
         this.load.image('front', './assets/front.png');
@@ -220,6 +221,16 @@ class Play extends Phaser.Scene
                         repeat: 0
                     }
                 )
+            }
+            if(bodyA.label == "playersense" && bodyB.label == "bat")
+            {
+                currBatteryLvl += 1;
+                
+            }
+            if(bodyB.label == "playersense" && bodyA.label == "bat")
+            {
+                currBatteryLvl += 1;
+                bodyB.
             }
         })
         this.currPlatformHeight = 350;

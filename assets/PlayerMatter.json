@@ -6,13 +6,13 @@
 		"isStatic": false,
 		"density": 0.1,
 		"restitution": 0,
-		"friction": 0.01,
+		"friction": 0.1,
 		"frictionAir": 0.01,
-		"frictionStatic": 0.0,
+		"frictionStatic": 0.5,
 		"collisionFilter": {
 			"group": 0,
 			"category": 1,
-			"mask": 1
+			"mask": 255
 		},
 		"fixtures": [
 			{
@@ -21,6 +21,13 @@
 				"vertices": [
 					[ { "x":91, "y":128 }, { "x":89, "y":125 }, { "x":51, "y":125 }, { "x":43, "y":130 }, { "x":46, "y":131 }, { "x":85, "y":131 } ],
 					[ { "x":41, "y":126 }, { "x":43, "y":130 }, { "x":51, "y":125 }, { "x":43, "y":124 } ]
+				]
+			},
+			{
+				"label": "playersense",
+				"isSensor": true,
+				"vertices": [
+					[ { "x":41, "y":111 }, { "x":91, "y":111 }, { "x":96, "y":50 }, { "x":73, "y":51 } ]
 				]
 			}
 		]

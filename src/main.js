@@ -13,6 +13,7 @@ var grnd;
 let platforms2;
 let rmatter;
 let platformMatter;
+let battmatt;
 
 let barPos = [];
 let score;
