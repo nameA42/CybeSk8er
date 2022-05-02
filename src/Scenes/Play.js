@@ -230,7 +230,6 @@ class Play extends Phaser.Scene
             if(bodyB.label == "playersense" && bodyA.label == "bat")
             {
                 currBatteryLvl += 1;
-                bodyB.
             }
         })
         this.currPlatformHeight = 350;
