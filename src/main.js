@@ -22,7 +22,7 @@ let spawnChances = [
     5,    //platforms
     10    //batteries
 ]
-let playerSpeed = 5;
+let playerSpeed = 20;
 let batteryTime = 15; //in seconds how long each battery lasts
 let currBatteryLvl = 6; //how many batteries to start with
 
