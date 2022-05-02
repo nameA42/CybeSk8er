@@ -282,17 +282,21 @@ class Play extends Phaser.Scene
         {
             console.log('spawning: ' + this.currPlatformSpawnGroup);
             this.currPlatformSpawnGroup++;
-            new Platform(this, player.x+400, 475, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*2, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*3, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*4, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*5, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*6, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*7, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*8, 'platform', null, {shape: platformMatter.platform});
-            new Platform(this, player.x+400, 475 -  platformDist*9, 'platform', null, {shape: platformMatter.platform});
-        }
+            platforms2.push(new Platform(this, player.x+400, 475, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*2, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*3, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*4, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*5, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*6, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*7, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*8, 'platform', null, {shape: platformMatter.platform}));
+            platforms2.push(new Platform(this, player.x+400, 475 -  platformDist*9, 'platform', null, {shape: platformMatter.platform}));
+            for(let i = platforms2.length - 10; i < platforms2.length ;i++)
+            {
+                platforms2[i].update(player.x, player.y);
+            }
+        }   
 
         //center the cam on the player
         cam.centerOn(player.x, player.y-player.height);
