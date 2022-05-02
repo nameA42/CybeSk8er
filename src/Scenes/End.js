@@ -13,6 +13,9 @@ class End extends Phaser.Scene {
      }
 
    create() {
+       //switch music
+       this.sound.stopAll();
+       music = this.sound.play('menumusic');
        // define keys
        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);

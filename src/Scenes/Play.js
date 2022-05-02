@@ -16,13 +16,15 @@ class Play extends Phaser.Scene
 
     preload() 
     {   
+        //load audio
+        this.load.audio('playmusic', 'assets/newsynth.mp3');
         //load assets
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
         this.load.image('ramp1', './assets/ramp1.png');
         this.load.image('ramp2', './assets/ramp2.png');
         //this.load.image('battery', './assets/battery.png');
-        this.load.image('platform', './assets/platform.png');
+        this.load.image('platform', './assets/pipegrime.png');
         this.load.json('rmatter', './assets/RampMatter.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
         this.load.json('platformMatter', './assets/PlatformMatter.json');
@@ -68,6 +70,9 @@ class Play extends Phaser.Scene
 
     create() 
     {
+        //change music
+        this.sound.stopAll();
+        music = this.sound.play('playmusic');
         //add camera
         cam = this.cameras.main;
 
@@ -346,7 +351,7 @@ class Play extends Phaser.Scene
         //set max velocity
         if(player.body.velocity.x > playerSpeed)
         {
-            console.log(player.body.velocity.x);
+            //console.log(player.body.velocity.x);
             player.setVelocityX(playerSpeed);
         }
         //update world bounds
@@ -357,7 +362,7 @@ class Play extends Phaser.Scene
     //ticks down the battery bar
     barTick(){
         currBatteryLvl -= 1;
-        console.log("Bar is at: " + (currBatteryLvl - 1));
+        //console.log("Bar is at: " + (currBatteryLvl - 1));
         this.batteryBar.update();
         if(currBatteryLvl == 0){
             this.scene.start("endScene");

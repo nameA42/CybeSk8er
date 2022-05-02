@@ -1,12 +1,11 @@
-class Menu extends Phaser.Scene {
+class Instructions extends Phaser.Scene {
     constructor(){
-        super("menuScene");
+        super("instructionsScene");
     }
 
     preload() {
         // BG
-        this.load.image('menu', './assets/titlesmall.png');
-        this.load.audio('menumusic', 'assets/menumusic.mp3');
+        this.load.image('instruct', './assets/instructionscreen.png');
       }
 
     create() {
@@ -14,8 +13,6 @@ class Menu extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
-        music = this.sound.play('menumusic');
 
         let menuConfig = {
             fontFamily: "Courier",
@@ -30,13 +27,11 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
         //background creation
-        this.menu = this.add.tileSprite(0, 0, 1000, 1000, 'menu').setOrigin(0, 0);
-        
-
+        this.instruct = this.add.tileSprite(0, 0, 1000, 1000, 'instruct').setOrigin(0, 0);
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySpace)) {
-            this.scene.start("instructionsScene");
+            this.scene.start("playScene");
         }
       }
 }

@@ -62,7 +62,7 @@ class Platform extends Phaser.Physics.Matter.Image
 
         //handles despawning of items
         if(this.spawnedItem != null && this.spawnedItem != 0 && (this.spawnedItem.x < player.x - 300)) {
-            console.log(!(this.spawnedItem instanceof Battery));
+            //console.log(!(this.spawnedItem instanceof Battery));
             if(!(this.spawnedItem instanceof Battery))
             {
                this.scene.add.image(this.spawnedItem.x, this.spawnedItem.y, this.spawnedItem.texture);
