@@ -18,6 +18,7 @@ class Play extends Phaser.Scene
     {   
         //load audio
         this.load.audio('playmusic', 'assets/newsynth.mp3');
+        this.load.audio('fuelPickup', 'assets/sfx/fuel_pickup.wav');
         //load assets
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
@@ -81,7 +82,7 @@ class Play extends Phaser.Scene
 
         //add camera
         cam = this.cameras.main;
-
+        
         //get Hitbox Cached shapes
         rmatter = this.cache.json.get('rmatter');
         let pmatter = this.cache.json.get('pmatter');
@@ -245,11 +246,13 @@ class Play extends Phaser.Scene
                 {
                     currBatteryLvl += 1;
                     bodyB.gameObject.destroy();
+                    this.sound.play('fuelPickup');
                 }
                 if(bodyB.label == "playersense" && bodyA.label == "bat")
                 {
                     currBatteryLvl += 1;
                     bodyA.gameObject.destroy();
+                    this.sound.play('fuelPickup');
                 }
                 //console.log(bodyB.label);
                 //console.log(bodyA.label);
