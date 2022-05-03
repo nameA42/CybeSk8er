@@ -15,6 +15,7 @@ class Menu extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+        this.sound.stopAll();
         music = this.sound.add('menumusic', 
             {
                 loop: true

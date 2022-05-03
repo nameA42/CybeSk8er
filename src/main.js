@@ -26,9 +26,9 @@ let spawnChances = [
 ]
 let playerSpeed = 5;
 let batteryTime = 3; //in seconds how long each battery lasts
-let currBatteryLvl = 1; //how many batteries to start with
+let currBatteryLvl = 0; //how many batteries to start with
 
 let game = new Phaser.Game(config);
 
 // reserve keyboard vars
-let keyA, keyD, keySpace;
+let keyA, keyD, keySpace, keyR, keyQ, keyC;
