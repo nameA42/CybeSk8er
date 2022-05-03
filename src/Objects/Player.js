@@ -22,7 +22,7 @@ class Player extends Phaser.Physics.Matter.Sprite
     {
         if(this.rotation >= 3.00 || this.rotation <= -3.00)
         {
-            console.log(this.rotation);
+            //console.log(this.rotation);
             this.flp = 1;
         }
         if(this.rotation <= 0.5 && this.rotation >= -0.5 && this.flp == 1)

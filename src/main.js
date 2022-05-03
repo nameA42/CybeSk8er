@@ -20,8 +20,8 @@ let barPos = [];
 let score;
 
 let spawnChances = [
-    12.5, //ramps
-    5,    //platforms
+    10, //ramps
+    10,    //platforms
     10    //batteries
 ]
 let playerSpeed = 20;

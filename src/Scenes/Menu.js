@@ -15,7 +15,12 @@ class Menu extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        music = this.sound.play('menumusic');
+        music = this.sound.add('menumusic', 
+            {
+                loop: true
+            }
+        );
+        music.play();
 
         let menuConfig = {
             fontFamily: "Courier",

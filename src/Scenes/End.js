@@ -15,7 +15,12 @@ class End extends Phaser.Scene {
    create() {
        //switch music
        this.sound.stopAll();
-       music = this.sound.play('menumusic');
+       music = this.sound.add('menumusic',
+            {
+                loop: true
+            }
+        );
+       music.play();
        // define keys
        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -50,6 +55,7 @@ class End extends Phaser.Scene {
    }
    update() {
        if (Phaser.Input.Keyboard.JustDown(keyA)) {
+           currBatteryLvl = 6;
            this.scene.start("playScene");
        }
      }

@@ -72,7 +72,13 @@ class Play extends Phaser.Scene
     {
         //change music
         this.sound.stopAll();
-        music = this.sound.play('playmusic');
+        music = this.sound.add('playmusic',
+            {
+                loop: true
+            }
+        );
+        music.play();
+
         //add camera
         cam = this.cameras.main;
 
@@ -238,10 +244,12 @@ class Play extends Phaser.Scene
                 if(bodyA.label == "playersense" && bodyB.label == "bat")
                 {
                     currBatteryLvl += 1;
+                    bodyB.gameObject.destroy();
                 }
                 if(bodyB.label == "playersense" && bodyA.label == "bat")
                 {
                     currBatteryLvl += 1;
+                    bodyA.gameObject.destroy();
                 }
                 //console.log(bodyB.label);
                 //console.log(bodyA.label);
@@ -364,7 +372,7 @@ class Play extends Phaser.Scene
         currBatteryLvl -= 1;
         //console.log("Bar is at: " + (currBatteryLvl - 1));
         this.batteryBar.update();
-        if(currBatteryLvl == 0){
+        if(currBatteryLvl < 0){
             this.scene.start("endScene");
         }
     }
