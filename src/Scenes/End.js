@@ -20,6 +20,7 @@ class End extends Phaser.Scene {
                 loop: true
             }
         );
+        this.sound.play('gameOver');
        music.play();
        // define keys
        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);

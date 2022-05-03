@@ -19,6 +19,13 @@ class Play extends Phaser.Scene
         //load audio
         this.load.audio('playmusic', 'assets/newsynth.mp3');
         this.load.audio('fuelPickup', 'assets/sfx/fuel_pickup.wav');
+        this.load.audio('idleBoard', 'assets/sfx/idle_board.mp3');
+        this.load.audio('jumpCharge1', 'assets/sfx/jump_charging.mp3');
+        this.load.audio('jumpCharge2', 'assets/sfx/jump_charge2.wav');
+        this.load.audio('jumpCharge3', 'assets/sfx/jump_charge3.mp3');
+        this.load.audio('thrusterBoost', 'assets/sfx/thruster_boost.mp3');
+        this.load.audio('fuelPickup2', 'assets/sfx/fuel_pickup2.wav');
+        this.load.audio('gameOver', 'assets/sfx/game_over.mp3');
         //load assets
         this.load.image('player', './assets/playtmp.png');
         this.load.image('flr', './assets/flrtmp.png');
@@ -73,13 +80,17 @@ class Play extends Phaser.Scene
     {
         //change music
         this.sound.stopAll();
-        music = this.sound.add('playmusic',
+        music = this.sound.play('playmusic',
+            {
+                loop: true,
+                volume: 0.5
+            }
+        );
+        this.sound.play('idleBoard',
             {
                 loop: true
             }
         );
-        music.play();
-
         //add camera
         cam = this.cameras.main;
         
@@ -246,13 +257,17 @@ class Play extends Phaser.Scene
                 {
                     currBatteryLvl += 1;
                     bodyB.gameObject.destroy();
-                    this.sound.play('fuelPickup');
+                    this.sound.play('fuelPickup2',
+                        {
+                            volume: 0.3
+                        }
+                    );
                 }
                 if(bodyB.label == "playersense" && bodyA.label == "bat")
                 {
                     currBatteryLvl += 1;
                     bodyA.gameObject.destroy();
-                    this.sound.play('fuelPickup');
+                    this.sound.play('fuelPickup2',);
                 }
                 //console.log(bodyB.label);
                 //console.log(bodyA.label);

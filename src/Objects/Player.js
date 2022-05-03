@@ -46,6 +46,7 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.ljumpcount = 0;
                 this.rjumpcount = 0;
                 this.onground = false;
+                this.scene.sound.play('jumpCharge1');
             }
         }
         else if(this.groundcd <= 0)

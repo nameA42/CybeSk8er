@@ -22,11 +22,11 @@ let score;
 let spawnChances = [
     10, //ramps
     10,    //platforms
-    10    //batteries
+    4    //batteries
 ]
-let playerSpeed = 20;
+let playerSpeed = 5;
 let batteryTime = 3; //in seconds how long each battery lasts
-let currBatteryLvl = 6; //how many batteries to start with
+let currBatteryLvl = 1; //how many batteries to start with
 
 let game = new Phaser.Game(config);
 
