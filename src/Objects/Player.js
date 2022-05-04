@@ -20,6 +20,10 @@ class Player extends Phaser.Physics.Matter.Sprite
     
     update()
     {
+        //create a function to return to idle
+        let endAnim = () => {
+            this.play('KCIDLE');
+        }
         if(this.rotation >= 3.00 || this.rotation <= -3.00)
         {
             //console.log(this.rotation);
@@ -32,28 +36,29 @@ class Player extends Phaser.Physics.Matter.Sprite
         }
         if(this.onground && this.groundcd <= 0)
         {
+            //if A is down charge the left foot
             if((keyA.isDown) && (this.ljumpcount < 100))
             {
                 this.ljumpcount += 10;
+                this.play('KCLEAN');
             }
+            //if D is down charge the left foot
             if((keyD.isDown) && (this.rjumpcount < 100))
             {
                 this.rjumpcount += 10;
+                this.play('KCLEAN');
             }
+            //if either key is released jump
             if((Phaser.Input.Keyboard.JustUp(keyD)) || Phaser.Input.Keyboard.JustUp(keyA))
             {
                 this.setVelocityY(this.body.velocity.y-2/50*(this.ljumpcount + this.rjumpcount));
                 this.ljumpcount = 0;
                 this.rjumpcount = 0;
                 this.onground = false;
+                //play jump animation and sound
                 this.scene.sound.play('jumpCharge1');
-
                 this.play('KCJUMP');
-                let endAnim = () => {
-                    this.play('KCIDLE');
-                  }
                 this.on('animationcomplete', endAnim);
-                
             }
         }
         else if(this.groundcd <= 0)
