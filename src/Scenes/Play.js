@@ -339,6 +339,7 @@ class Play extends Phaser.Scene
             }
         }
 
+        // max height linked to stopo
         if(player.y <= (-1) * (platformDist*maxHeight) && player.onground && this.stopo == 0)
         {
             this.stopo = 1;
@@ -355,6 +356,7 @@ class Play extends Phaser.Scene
             this.SPIN.x = cam.scrollX + cam.width/2;
             this.SPIN.y = cam.scrollY + cam.height/2;
         }
+
         //if(this.stopo == 2)
         //{
         //    cam.pan(player.x / 2, player.y / 2, Math.sqrt(2*platformDist*maxHeight)*1000/60);
@@ -373,13 +375,13 @@ class Play extends Phaser.Scene
         //move ground under player
         grnd.x = player.x;
 
-        //move player
+        //move player forwards
         if(player.onground)
         {
             player.thrust(this.pa);
         }
 
-        //give player some upward thrust
+        //give player some upward thrust if they are not upsidown
         if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/3)
         {
             player.thrustLeft(0.0008);

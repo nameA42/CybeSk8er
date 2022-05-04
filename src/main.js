@@ -5,7 +5,9 @@
 // For the Programming portion of the creative tilt for our game we learned how to use the matter engine of Phaser
 // instead of arcade. This was neccesary to our game design because we really wanted the player to be able to
 // do sick flips. Because arcade is axis locked, we took it upon ourselves to learn matter instead and did 
-// really cool rotation stuff which is mostly done in our Player.js.
+// really cool rotation stuff which is mostly done in our Player.js. Along side this, the Players movement is mostly
+// based on a thrust, friction, center of mass, and inertial system provided by matter. Including stuff like air
+// resistence and angular inertia.
 //
 // For the Visual Style portion of the creative tilt for our game we created a nice cyberpunk style and did something
 // a little different from the normal endless runner. Instead of focusing on enemies and obstacles to halt the player
@@ -23,7 +25,7 @@ let config = {
         forceSetTimeOut: true
     },
     autoCenter: true,
-    scene: [ Menu, Play, End, Instructions, Credits ]
+    scene: [ Logo, Menu, Play, End, Instructions, Credits ]
 };
 
 var platforms;
@@ -37,7 +39,7 @@ let platformMatter;
 let battmatt;
 let music;
 let platformDist = 275;
-let maxHeight = 2;
+let maxHeight = 8;
 
 let barPos = [];
 let score = 0;
@@ -50,7 +52,7 @@ let spawnChances = [
 ]
 let playerSpeed = 10;
 
-let batteryTime = 10; //in seconds how long each battery lasts
+let batteryTime = 5; //in seconds how long each battery lasts
 let batteryMax = 5; //max batteries you can have
 let currBatteryLvl = batteryMax; //how many batteries to start with
 

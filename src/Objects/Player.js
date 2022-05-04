@@ -5,15 +5,22 @@ class Player extends Phaser.Physics.Matter.Sprite
         super(scene.matter.world, x, y, texture, frame, options);
         scene.add.existing(this);
         this.ms = 10;
+        //get value for player jumping
         this.ljumpcount = 0;
         this.rjumpcount = 0;
         this.setBounce(0);
         this.inramp = 0;
+        // check player on ground
         this.onground = false;
+        // grounding cool down
         this.groundcd = 0;
+        // reset cool down
         this.rcd = 0;
+        // check player flipping
         this.flp = 0;
+        // lighten player
         this.body.mass = 1;
+        // move center of mass to board
         this.body.centerOfMass = this.body.parts[1].centerOfMass;
     }
     
@@ -23,6 +30,7 @@ class Player extends Phaser.Physics.Matter.Sprite
         let endAnim = () => {
             this.play('KCIDLE');
         }
+        //check player flipping
         if(this.rotation >= 3.00 || this.rotation <= -3.00)
         {
             //console.log(this.rotation);
@@ -33,6 +41,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             this.flp = 0;
             score += 20;
         }
+        //handle jumping
         if(this.onground && this.groundcd <= 0)
         {
             //if A is down charge the left foot
@@ -60,6 +69,7 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.on('animationcomplete', endAnim);
             }
         }
+        // allow player to rotate in the air
         else if(this.groundcd <= 0)
         {
             if((keyD.isDown))
@@ -71,6 +81,7 @@ class Player extends Phaser.Physics.Matter.Sprite
                 this.rotation -= 0.1;
             }
         }
+        //reset player if they get stuck
         if(this.body.velocity.x <= 0 && this.rcd <= 0)
         {
             this.body.velocity.x = 1;
@@ -80,6 +91,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             score -= 10;
             this.flp = 0;
         }
+        //lower cool downs
         this.groundcd = Math.max(this.groundcd - 1, 0);
         this.rcd -= 1;
         //console.log(this.body.velocity.x);
