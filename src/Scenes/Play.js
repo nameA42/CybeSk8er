@@ -32,9 +32,11 @@ class Play extends Phaser.Scene
         this.load.image('flr', './assets/flrtmp.png');
         this.load.image('ramp1', './assets/ramp1.png');
         this.load.image('ramp2', './assets/ramp2.png');
+        this.load.image('bigramp', './assets/bigramp.png');
         //this.load.image('battery', './assets/battery.png');
         this.load.image('platform', './assets/pipegrime.png');
         this.load.json('rmatter', './assets/RampMatter.json');
+        this.load.json('rbmatter', './assets/RampMatterBig.json');
         this.load.json('pmatter', './assets/PlayerMatter.json');
         this.load.json('platformMatter', './assets/PlatformMatter.json');
         this.load.json('battmatt', './assets/BatteryMatter.json');
@@ -71,6 +73,7 @@ class Play extends Phaser.Scene
         
         //get Hitbox Cached shapes
         rmatter = this.cache.json.get('rmatter');
+        this.rbmatter = this.cache.json.get('rbmatter');
         let pmatter = this.cache.json.get('pmatter');
         platformMatter = this.cache.json.get('platformMatter');
         battmatt = this.cache.json.get('battmatt');
@@ -343,9 +346,9 @@ class Play extends Phaser.Scene
         if(this.stopo == 1)
         {
             this.stopo = 2;
-            let rom = new Ramp(this, player.x + 1000, player.y, 'ramp1', null, { shape: rmatter.rmptmp}).setScale(10);
-            rom.x = player.x + rom.width+600;
-            rom.y = player.y - rom.height;
+            let rom = new Ramp(this, player.x + 1000, player.y, 'bigramp', null, { shape: this.rbmatter.rmptmp}).setScale(2);
+            rom.x = player.x + rom.width+400;
+            rom.y = player.y - rom.height + 100;
         }
         if(this.stopo == 2)
         {
