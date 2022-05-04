@@ -37,7 +37,7 @@ let platformMatter;
 let battmatt;
 let music;
 let platformDist = 275;
-let maxHeight = 20;
+let maxHeight = 2;
 
 let barPos = [];
 let score = 0;
