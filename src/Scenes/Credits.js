@@ -26,10 +26,10 @@ class Credits extends Phaser.Scene {
        //background creation
        this.creditsScreen = this.add.sprite(0, 0, 'Comp 1_10001').setOrigin(0, 0);
        this.creditsScreen.play('creditsAnim');
-       let doSomething = () => {
+       let endAnim = () => {
          this.scene.start("endScene");
        }
-       this.creditsScreen.on('animationcomplete', doSomething);
+       this.creditsScreen.on('animationcomplete', endAnim);
        
        
        
