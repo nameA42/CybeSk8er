@@ -32,7 +32,7 @@ class Platform extends Phaser.Physics.Matter.Image
         }
         
         //handles spawning of ramps/batteries
-        if(this.spawner && this.spawnedItem == null)
+        if(this.spawner && this.spawnedItem == null && this.y > py && this.x > player.x + 100)
         {   
             let randomSpawn = Math.random();
             if(randomSpawn < (spawnChances[0]/2)/100)

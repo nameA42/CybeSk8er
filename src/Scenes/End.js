@@ -29,9 +29,8 @@ class End extends Phaser.Scene {
 
        let menuConfig = {
            fontFamily: "Courier",
-           fontSize: '26px',
-           backgroundColor: '#F3B141',
-           color: '#843605',
+           fontSize: '32px',
+           color: '#FFFFFF',
            align: 'right',
            padding: {
                top: 5,
@@ -39,6 +38,7 @@ class End extends Phaser.Scene {
            },
            fixedWidth: 0
        }
+       score = 0;
        //background creation
        this.endscreen = this.add.tileSprite(0, 0, 1000, 1000, 'endscreen').setOrigin(0, 0);
 

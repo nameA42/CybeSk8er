@@ -2,6 +2,10 @@ let config = {
     type: Phaser.AUTO,
     width: 640,
     height: 480,
+    fps: {
+        target: 60,
+        forceSetTimeOut: true
+    },
     scene: [ Menu, Play, End, Instructions, Credits ]
 };
 
@@ -15,9 +19,11 @@ let rmatter;
 let platformMatter;
 let battmatt;
 let music;
+let platformDist = 275;
+let maxHeight = 3;
 
 let barPos = [];
-let score;
+let score = 0;
 let gameOverSound = true;
 
 let spawnChances = [
@@ -25,9 +31,9 @@ let spawnChances = [
     10,    //platforms
     4    //batteries
 ]
-let playerSpeed = 5;
+let playerSpeed = 15;
 
-let batteryTime = 3; //in seconds how long each battery lasts
+let batteryTime = 300; //in seconds how long each battery lasts
 let batteryMax = 5; //max batteries you can have
 let currBatteryLvl = batteryMax; //how many batteries to start with
 

@@ -8,7 +8,8 @@ class Play extends Phaser.Scene
                 default: 'matter',
                 matter: {
                     debug: false,
-                    gravity: { y : 1 }
+                    gravity: { y : 1 },
+                    fps: 60
                 }
             }
         });
@@ -78,6 +79,7 @@ class Play extends Phaser.Scene
 
     create() 
     {
+        this.stopo = 0;
         //change music
         this.sound.stopAll();
         music = this.sound.play('playmusic',
@@ -86,11 +88,11 @@ class Play extends Phaser.Scene
                 volume: 0.5
             }
         );
-        this.sound.play('idleBoard',
-            {
-                loop: true
-            }
-        );
+        // this.sound.play('idleBoard',
+        //     {
+        //         loop: true
+        //     }
+        // );
         //add camera
         cam = this.cameras.main;
         
@@ -144,6 +146,7 @@ class Play extends Phaser.Scene
             }
         );
 
+
         //background creation
         this.bgr = this.add.tileSprite(0, 0, 1000, 1000, 'bg').setOrigin(0, 0);
         this.next1 = this.add.tileSprite(0, 0, 1000, 1000, 'next3').setOrigin(0, 0);
@@ -192,9 +195,8 @@ class Play extends Phaser.Scene
         //score
         let scrConfig = {
             fontFamily: "Courier",
-            fontSize: '26px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            fontSize: '32px',
+            color: '#FFFFFF',
             align: 'right',
             padding: {
                 top: 5,
@@ -202,7 +204,8 @@ class Play extends Phaser.Scene
             },
             fixedWidth: 0
         }
-        this.scr = this.add.text(cam.scrollX + cam.width-40, cam.scrollY - 50, 0, scrConfig);
+        this.SPIN = this.add.text(-10000, 10000, "!!!SPIN!!!", scrConfig).setOrigin(0.5);
+        this.scr = this.add.text(cam.scrollX + cam.width-100, cam.scrollY - 50, 0, scrConfig);
 
         //battery animation
         this.anims.create({
@@ -228,9 +231,15 @@ class Play extends Phaser.Scene
         //check if player is on the ground
         this.matter.world.on("collisionactive", (event, bodyA, bodyB) =>
         {
-            if((bodyA.label == "player" && (bodyB.label == "ngc" || bodyB.label == "flr")) || (bodyB.label == "player" && (bodyA.label == "ngc" || bodyA.label == "flr")))
+            if((bodyA.label == "player" && bodyB.label == "flr") || (bodyB.label == "player" && bodyA.label == "flr"))
             {
                 player.grounded();
+                this.pa = 0.0007;
+            }
+            if((bodyA.label == "player" && bodyB.label == "ngc") || (bodyB.label == "player" && bodyA.label == "ngc"))
+            {
+                player.grounded();
+                this.pa = 0.0015;
             }
         })
 
@@ -241,7 +250,7 @@ class Play extends Phaser.Scene
             {
                 this.time.addEvent(
                     {
-                        delay: 900,
+                        delay: 300,
                         callback: () => {player.onground = false;
                             //console.log(player.rotation);
                         },
@@ -288,7 +297,7 @@ class Play extends Phaser.Scene
         this.batteryBar.update();
         
         //scoreup
-        this.scr.x = cam.scrollX + cam.width-40;
+        this.scr.x = cam.scrollX + cam.width-100;
         this.scr.y = cam.scrollY;
         this.scr.text = score;
 
@@ -326,15 +335,13 @@ class Play extends Phaser.Scene
             }
         }
 
-        
         //if the platform goes too far come back
         //calculate the current height of the top platform
-        let platformDist = 275;
         this.currPlatformHeight = 475 - platformDist * ((Math.floor((player.y - 461) / platformDist) * (-1))+ 1);
         let resetPoint = player.x - 400;
         for(let i = 0; i < platforms2.length; i++)  
         {
-            if(platforms2[i].x < resetPoint) 
+            if(platforms2[i].x < resetPoint && this.stopo == 0) 
             {
                 this.add.image(platforms2[i].x, platforms2[i].y, 'platform');
                 //set the spawned item to null to ensure that a new item is spawned
@@ -356,8 +363,37 @@ class Play extends Phaser.Scene
             }
         }
 
+        if(player.y <= (-1) * (platformDist*maxHeight) && player.onground && this.stopo == 0)
+        {
+            this.stopo = 1;
+        }
+        if(this.stopo == 1)
+        {
+            this.stopo = 2;
+            let rom = new Ramp(this, player.x + 1000, player.y, 'ramp1', null, { shape: rmatter.rmptmp}).setScale(10);
+            rom.x = player.x + rom.width+600;
+            rom.y = player.y - rom.height;
+        }
+        if(this.stopo == 2)
+        {
+            this.SPIN.x = cam.scrollX + cam.width/2;
+            this.SPIN.y = cam.scrollY + cam.height/2;
+        }
+        //if(this.stopo == 2)
+        //{
+        //    cam.pan(player.x / 2, player.y / 2, Math.sqrt(2*platformDist*maxHeight)*1000/60);
+        //    cam.zoomTo(480/(platformDist*maxHeight), Math.sqrt(2*platformDist*maxHeight)*1000/60);
+        //    this.stopo = 3;
+        //}
         //center the cam on the player
+        //if(this.stopo < 2)
+        //{
         cam.centerOn(player.x, player.y-player.height);
+        //}
+        if(player.y >= game.config.height - 60)
+        {
+            this.scene.start("playScene");
+        }
         //move ground under player
         grnd.x = player.x;
 
@@ -368,7 +404,7 @@ class Play extends Phaser.Scene
         }
 
         //give player some upward thrust
-        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/12)
+        if(player.rotation < Math.PI/2 && player.rotation > -Math.PI/3)
         {
             player.thrustLeft(0.0008);
             //console.log(player.rotation);

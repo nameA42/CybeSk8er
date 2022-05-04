@@ -12,7 +12,6 @@ class Player extends Phaser.Physics.Matter.Sprite
         this.onground = false;
         this.groundcd = 0;
         this.rcd = 0;
-        score = 0;
         this.flp = 0;
         this.body.mass = 1;
         this.body.centerOfMass = this.body.parts[1].centerOfMass;
@@ -42,7 +41,7 @@ class Player extends Phaser.Physics.Matter.Sprite
             }
             if((Phaser.Input.Keyboard.JustUp(keyD)) || Phaser.Input.Keyboard.JustUp(keyA))
             {
-                this.setVelocityY(this.body.velocity.y-2/50*(this.ljumpcount + this.rjumpcount));
+                this.thrustLeft(1/9000*(this.ljumpcount + this.rjumpcount));
                 this.ljumpcount = 0;
                 this.rjumpcount = 0;
                 this.onground = false;
