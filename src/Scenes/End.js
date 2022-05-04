@@ -16,7 +16,9 @@ class End extends Phaser.Scene {
                 loop: true
             }
         );
-        this.sound.play('gameOver');
+        if(gameOverSound){
+            this.sound.play('gameOver');
+        }
        music.play();
        // define keys
        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -52,14 +54,17 @@ class End extends Phaser.Scene {
        if (Phaser.Input.Keyboard.JustDown(keyR)) {
            currBatteryLvl = 6;
            this.scene.start("playScene");
+           gameOverSound = true;
        }
        if (Phaser.Input.Keyboard.JustDown(keyQ)) {
-        currBatteryLvl = 6;
-        this.scene.start("menuScene");
+           currBatteryLvl = 6;
+           this.scene.start("menuScene");
+           gameOverSound = true;
        }
        if (Phaser.Input.Keyboard.JustDown(keyC)) {
-        currBatteryLvl = 6;
-        this.scene.start("instructionsScene");
+           currBatteryLvl = 6;
+           this.scene.start("creditsScene");
+           gameOverSound = false;
        }
      }
 }

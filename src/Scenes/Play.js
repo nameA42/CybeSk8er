@@ -279,9 +279,9 @@ class Play extends Phaser.Scene
     update()
     {   
         //enforce bar max
-        if(currBatteryLvl > 6) 
+        if(currBatteryLvl > batteryMax) 
         {
-            currBatteryLvl = 6;
+            currBatteryLvl = batteryMax;
         }
         //update bar position
         barPos = [player.x-350, player.y-350];
