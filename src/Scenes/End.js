@@ -38,7 +38,6 @@ class End extends Phaser.Scene {
            },
            fixedWidth: 0
        }
-       score = 0;
        //background creation
        this.endscreen = this.add.tileSprite(0, 0, 1000, 1000, 'endscreen').setOrigin(0, 0);
 
@@ -54,11 +53,13 @@ class End extends Phaser.Scene {
        if (Phaser.Input.Keyboard.JustDown(keyR)) {
            currBatteryLvl = 6;
            this.scene.start("playScene");
+           score = 0;
            gameOverSound = true;
        }
        if (Phaser.Input.Keyboard.JustDown(keyQ)) {
            currBatteryLvl = 6;
            this.scene.start("menuScene");
+           score = 0;
            gameOverSound = true;
        }
        if (Phaser.Input.Keyboard.JustDown(keyC)) {
