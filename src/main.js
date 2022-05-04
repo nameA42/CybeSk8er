@@ -37,20 +37,20 @@ let platformMatter;
 let battmatt;
 let music;
 let platformDist = 275;
-let maxHeight = 3;
+let maxHeight = 20;
 
 let barPos = [];
 let score = 0;
 let gameOverSound = true;
 
 let spawnChances = [
-    10, //ramps
+    5, //ramps
     10,    //platforms
-    4    //batteries
+    7    //batteries
 ]
-let playerSpeed = 15;
+let playerSpeed = 10;
 
-let batteryTime = 300; //in seconds how long each battery lasts
+let batteryTime = 10; //in seconds how long each battery lasts
 let batteryMax = 5; //max batteries you can have
 let currBatteryLvl = batteryMax; //how many batteries to start with
 
