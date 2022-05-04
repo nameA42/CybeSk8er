@@ -1,0 +1,938 @@
+{
+   "frames": [
+      {
+         "filename": "idle34",
+         "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle35",
+         "frame": {
+            "x": 0,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle36",
+         "frame": {
+            "x": 151,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle37",
+         "frame": {
+            "x": 151,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle38",
+         "frame": {
+            "x": 0,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle39",
+         "frame": {
+            "x": 151,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle40",
+         "frame": {
+            "x": 302,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle41",
+         "frame": {
+            "x": 302,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle42",
+         "frame": {
+            "x": 302,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle43",
+         "frame": {
+            "x": 0,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle0",
+         "frame": {
+            "x": 151,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle1",
+         "frame": {
+            "x": 302,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle2",
+         "frame": {
+            "x": 453,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle3",
+         "frame": {
+            "x": 453,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle4",
+         "frame": {
+            "x": 453,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle5",
+         "frame": {
+            "x": 453,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle6",
+         "frame": {
+            "x": 0,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle7",
+         "frame": {
+            "x": 151,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle8",
+         "frame": {
+            "x": 302,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle9",
+         "frame": {
+            "x": 453,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle10",
+         "frame": {
+            "x": 604,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle11",
+         "frame": {
+            "x": 604,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle12",
+         "frame": {
+            "x": 604,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle13",
+         "frame": {
+            "x": 604,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle14",
+         "frame": {
+            "x": 604,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle15",
+         "frame": {
+            "x": 0,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle16",
+         "frame": {
+            "x": 151,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle17",
+         "frame": {
+            "x": 302,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle18",
+         "frame": {
+            "x": 453,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle19",
+         "frame": {
+            "x": 604,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle20",
+         "frame": {
+            "x": 755,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle21",
+         "frame": {
+            "x": 755,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle22",
+         "frame": {
+            "x": 755,
+            "y": 302,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle23",
+         "frame": {
+            "x": 755,
+            "y": 453,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle24",
+         "frame": {
+            "x": 755,
+            "y": 604,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle25",
+         "frame": {
+            "x": 755,
+            "y": 755,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle26",
+         "frame": {
+            "x": 0,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle27",
+         "frame": {
+            "x": 151,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle28",
+         "frame": {
+            "x": 302,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle29",
+         "frame": {
+            "x": 453,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle30",
+         "frame": {
+            "x": 604,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle31",
+         "frame": {
+            "x": 755,
+            "y": 906,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle32",
+         "frame": {
+            "x": 906,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      },
+      {
+         "filename": "idle33",
+         "frame": {
+            "x": 906,
+            "y": 151,
+            "w": 150,
+            "h": 150
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 150
+         },
+         "sourceSize": {
+            "w": 150,
+            "h": 150
+         }
+      }
+   ],
+   "meta": {
+      "app": "https://www.leshylabs.com/apps/sstool/",
+      "version": "Leshy SpriteSheet Tool v0.8.4",
+      "image": "KCatlas.png",
+      "size": {
+         "w": 1056,
+         "h": 1056
+      },
+      "scale": 1
+   }
+}

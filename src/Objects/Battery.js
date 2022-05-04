@@ -1,4 +1,4 @@
-class Ramp extends Phaser.Physics.Matter.Image
+class Battery extends Phaser.Physics.Matter.Sprite
 {
     constructor(scene, x, y, texture, frame, options)
     {
@@ -6,15 +6,11 @@ class Ramp extends Phaser.Physics.Matter.Image
         scene.add.existing(this);
         this.isStatic = true;
         this.setIgnoreGravity(true);
-        this.plcX = x;
+        this.setSensor(true);
     }
 
     
     update()
     {
-        if(this.x < cam.x)
-        {
-            this.x += this.plcX + 2000;
-        }
     }
 }

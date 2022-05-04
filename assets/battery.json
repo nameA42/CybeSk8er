@@ -1,0 +1,74 @@
+{
+   "frames": {
+      "battery0001": {
+         "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "sourceSize": {
+            "w": 196,
+            "h": 339
+         }
+      },
+      "battery0002": {
+         "frame": {
+            "x": 197,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "sourceSize": {
+            "w": 196,
+            "h": 339
+         }
+      },
+      "battery0003": {
+         "frame": {
+            "x": 394,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "rotated": false,
+         "trimmed": false,
+         "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 196,
+            "h": 339
+         },
+         "sourceSize": {
+            "w": 196,
+            "h": 339
+         }
+      }
+   },
+   "meta": {
+      "app": "https://www.leshylabs.com/apps/sstool/",
+      "version": "Leshy SpriteSheet Tool v0.8.4",
+      "image": "battery.png",
+      "size": {
+         "w": 590,
+         "h": 339
+      },
+      "scale": 1
+   }
+}
